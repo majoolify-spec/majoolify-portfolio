@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type ContactFormProps = {
   locale: "en" | "fr";
@@ -35,6 +35,7 @@ export function ContactForm({
   const labels = copy[locale];
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(formData: FormData) {
     setStatus("loading");
@@ -52,6 +53,7 @@ export function ContactForm({
           email: formData.get("email"),
           company: formData.get("company"),
           brief: formData.get("brief"),
+          website: formData.get("website"),
         }),
       });
 
@@ -66,6 +68,7 @@ export function ContactForm({
 
       setStatus("success");
       setMessage(successMessage);
+      formRef.current?.reset();
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : labels.error);
@@ -74,15 +77,27 @@ export function ContactForm({
 
   return (
     <form
+      ref={formRef}
       action={handleSubmit}
       className="glass-panel rounded-[2rem] p-6 md:p-8"
+      aria-busy={status === "loading"}
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="sr-only"
+        aria-hidden
+      />
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-semibold">{labels.name}</span>
           <input
             required
             name="name"
+            autoComplete="name"
+            maxLength={120}
             className="w-full rounded-full border border-[var(--border)] bg-white/80 px-4 py-3"
           />
         </label>
@@ -92,6 +107,8 @@ export function ContactForm({
             required
             type="email"
             name="email"
+            autoComplete="email"
+            maxLength={120}
             className="w-full rounded-full border border-[var(--border)] bg-white/80 px-4 py-3"
           />
         </label>
@@ -100,6 +117,8 @@ export function ContactForm({
         <span className="mb-2 block text-sm font-semibold">{labels.company}</span>
         <input
           name="company"
+          autoComplete="organization"
+          maxLength={160}
           className="w-full rounded-full border border-[var(--border)] bg-white/80 px-4 py-3"
         />
       </label>
@@ -109,6 +128,7 @@ export function ContactForm({
           required
           name="brief"
           rows={6}
+          maxLength={5000}
           className="w-full rounded-[1.5rem] border border-[var(--border)] bg-white/80 px-4 py-3"
         />
       </label>
@@ -122,6 +142,8 @@ export function ContactForm({
         </button>
         {status !== "idle" ? (
           <p
+            role="status"
+            aria-live="polite"
             className={`text-sm ${
               status === "success" ? "text-[var(--success)]" : "text-[var(--danger)]"
             }`}

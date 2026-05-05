@@ -187,7 +187,7 @@ export default async function CaseStudyPage({
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 40vw, 100vw"
-                loading="eager"
+                priority
               />
             </div>
             <div className="grid gap-4 p-6 md:grid-cols-2">

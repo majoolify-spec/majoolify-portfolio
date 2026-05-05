@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import type { CSSProperties } from "react";
@@ -14,6 +13,7 @@ import {
 } from "lucide-react";
 import { InteractiveLayer } from "./interactive-layer";
 import { PublicFooter, PublicHeader } from "./site-chrome";
+import { WorkShowcase } from "./work-showcase";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta, HomeContent, SiteSettings } from "../lib/schemas";
 import { toAbsoluteUrl } from "../lib/seo";
@@ -143,6 +143,9 @@ export function MarketingPage({
 
   return (
     <main className="min-h-screen">
+      <a href="#main-content" className="skip-link">
+        {locale === "en" ? "Skip to content" : "Aller au contenu"}
+      </a>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -154,7 +157,7 @@ export function MarketingPage({
       <InteractiveLayer />
       <PublicHeader locale={locale} home={home} />
 
-      <div className="shell rhythm-shell relative overflow-hidden pt-8">
+      <div id="main-content" className="shell rhythm-shell relative overflow-x-clip pt-8">
         <div className="ambient-orb ambient-orb--teal right-[-2rem] top-12 h-40 w-40" />
         <div className="ambient-orb ambient-orb--amber left-[-1rem] top-40 h-56 w-56" />
 
@@ -256,6 +259,52 @@ export function MarketingPage({
           </div>
         </section>
 
+        <section className="py-12">
+          <p className="section-kicker">
+            {locale === "en" ? "Capabilities wall" : "Mur de capacités"}
+          </p>
+          <div className="bento-wall mt-6">
+            <article className="bento-card bento-card--ink">
+              <p className="bento-eyebrow">{locale === "en" ? "Frontend craft" : "Craft frontend"}</p>
+              <h3>
+                {locale === "en"
+                  ? "Interfaces that feel sharp in motion, not just static screenshots."
+                  : "Des interfaces nettes en mouvement, pas seulement en capture statique."}
+              </h3>
+              <div className="bento-tags">
+                <span>Next.js</span>
+                <span>Motion rhythm</span>
+                <span>Design systems</span>
+              </div>
+            </article>
+            <article className="bento-card bento-card--teal">
+              <p className="bento-eyebrow">{locale === "en" ? "Execution speed" : "Vitesse d’exécution"}</p>
+              <h3>
+                {locale === "en"
+                  ? "From concept to deployable build with production constraints respected."
+                  : "Du concept au build déployable en respectant les contraintes de production."}
+              </h3>
+              <div className="bento-metric">
+                <strong>24h</strong>
+                <span>{locale === "en" ? "typical first implementation sprint" : "sprint initial d’implémentation typique"}</span>
+              </div>
+            </article>
+            <article className="bento-card bento-card--amber">
+              <p className="bento-eyebrow">{locale === "en" ? "AI prompt engineering" : "Prompt engineering IA"}</p>
+              <h3>
+                {locale === "en"
+                  ? "Prompt workflows integrated with real UX, guardrails, and admin operations."
+                  : "Des workflows de prompts intégrés à une UX réelle, avec garde-fous et opérations admin."}
+              </h3>
+              <div className="bento-tags">
+                <span>Prompt QA</span>
+                <span>Human review</span>
+                <span>Ops-ready</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
         <section className="py-6">
           <div className="glass-panel rounded-[2rem] p-6 md:p-8">
             <p className="section-kicker">{home.credibility.eyebrow}</p>
@@ -319,79 +368,7 @@ export function MarketingPage({
               <p className="mt-4 max-w-2xl text-pretty text-[var(--muted)]">{home.work.intro}</p>
             </div>
           </div>
-          <div className="work-grid mt-8 grid gap-5 lg:grid-cols-3">
-            {caseStudies.map((study, index) => {
-              const preview = study.previewMedia[0];
-              const isRedacted = study.privacy === "redacted";
-              const challenge = study.outcomes[1] ?? study.outcomes[0];
-
-              return (
-                <article
-                  key={study.slug}
-                  className="work-card glass-panel group overflow-hidden rounded-[2rem]"
-                >
-                  <div className="relative aspect-[16/11] overflow-hidden">
-                    <Image
-                      src={preview.src}
-                      alt={preview.alt}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-[1.045]"
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1724]/60 via-transparent to-transparent" />
-                    <div className="work-card-pulse absolute -right-8 -top-8 h-28 w-28 rounded-full bg-teal-300/20 blur-2xl" />
-                    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-white">
-                      <span className="rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]">
-                        {study.status}
-                      </span>
-                      {isRedacted ? (
-                        <span className="rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold">
-                          {locale === "en" ? "Redacted" : "Confidentiel"}
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-                      {study.clientLabel} • {study.year}
-                    </p>
-                    <h3 className="mt-3 text-2xl font-semibold text-balance">
-                      {localizeCopy(study.title, locale)}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                      {localizeCopy(study.summary, locale)}
-                    </p>
-                    <div className="mt-4 rounded-2xl border border-black/10 bg-white/64 p-3">
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
-                        {locale === "en" ? "Engineering challenge" : "Défi d’ingénierie"}
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-[var(--foreground)]">
-                        {localizeCopy(challenge.label, locale)}: {challenge.value}
-                      </p>
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {study.stack.slice(0, 4).map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-medium text-[var(--accent-strong)]"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      href={`/${locale}/work/${study.slug}`}
-                      className="mt-6 inline-flex min-h-10 items-center gap-2 rounded-full px-3 text-sm font-semibold text-[var(--accent-strong)] transition group-hover:translate-x-1"
-                    >
-                      {locale === "en" ? "Open case study" : "Voir l’étude de cas"}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+          <WorkShowcase locale={locale} caseStudies={caseStudies} />
         </section>
 
         <section id="experiments" className="scroll-mt-28 py-14">

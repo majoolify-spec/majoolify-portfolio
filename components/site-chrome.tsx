@@ -30,48 +30,67 @@ export function LocaleSwitch({
 
 export function PublicHeader({ locale, home }: PublicHeaderProps) {
   const base = `/${locale}`;
+  const navItems = [
+    { key: "work", label: home.nav.work },
+    { key: "services", label: home.nav.services },
+    { key: "process", label: home.nav.process },
+    { key: "about", label: home.nav.about },
+    { key: "contact", label: home.nav.contact },
+  ] as const;
 
   return (
     <header className="sticky top-0 z-30 border-b border-black/5 bg-[rgba(247,240,228,0.8)] backdrop-blur-xl">
-      <div className="shell flex items-center justify-between gap-4 py-4">
-        <Link href={base} className="flex items-center gap-3">
-          <span className="on-ink inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--foreground)] text-sm font-semibold">
-            M
-          </span>
-          <div>
-            <p className="text-sm font-semibold tracking-[0.16em] text-[var(--muted)]">
-              MAJOOLIFY
-            </p>
-            <p className="text-xs text-[var(--muted)]">Engineering studio</p>
-          </div>
-        </Link>
-        <nav className="hidden items-center gap-5 text-sm text-[var(--muted)] lg:flex">
-          <a href={`${base}#work`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
-            {home.nav.work}
-          </a>
-          <a href={`${base}#services`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
-            {home.nav.services}
-          </a>
-          <a href={`${base}#process`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
-            {home.nav.process}
-          </a>
-          <a href={`${base}#about`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
-            {home.nav.about}
-          </a>
-          <a href={`${base}#contact`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
-            {home.nav.contact}
-          </a>
-        </nav>
-        <div className="flex items-center gap-3">
-          <LocaleSwitch locale={locale} href={`/${alternateLocale(locale)}`} />
-          <Link
-            href="/admin"
-            className="hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium md:inline-flex"
-          >
-            Admin
+      <div className="shell py-4">
+        <div className="flex items-center justify-between gap-4">
+          <Link href={base} className="flex items-center gap-3">
+            <span className="on-ink inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--foreground)] text-sm font-semibold">
+              M
+            </span>
+            <div>
+              <p className="text-sm font-semibold tracking-[0.16em] text-[var(--muted)]">
+                MAJOOLIFY
+              </p>
+              <p className="text-xs text-[var(--muted)]">Engineering studio</p>
+            </div>
           </Link>
+          <nav aria-label="Primary" className="hidden items-center gap-5 text-sm text-[var(--muted)] lg:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.key}
+                href={`${base}#${item.key}`}
+                className="inline-flex min-h-9 min-w-10 items-center justify-center py-1"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-3">
+            <LocaleSwitch locale={locale} href={`/${alternateLocale(locale)}`} />
+            <Link
+              href="/admin"
+              className="hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium md:inline-flex"
+            >
+              Admin
+            </Link>
+          </div>
         </div>
+
+        <nav
+          aria-label="Sections"
+          className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.key}
+              href={`${base}#${item.key}`}
+              className="rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-xs font-medium whitespace-nowrap text-[var(--muted)]"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </div>
+      <div className="header-progress" aria-hidden />
     </header>
   );
 }
