@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import type { CSSProperties } from "react";
 import {
   ArrowRight,
@@ -11,11 +12,23 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
-import { ContactForm } from "./contact-form";
 import { InteractiveLayer } from "./interactive-layer";
 import { PublicFooter, PublicHeader } from "./site-chrome";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta, HomeContent, SiteSettings } from "../lib/schemas";
+import { toAbsoluteUrl } from "../lib/seo";
+
+const ContactForm = dynamic(
+  () => import("./contact-form").then((module) => module.ContactForm),
+  {
+    loading: () => (
+      <div
+        className="glass-panel h-[520px] rounded-[2rem] p-6 md:p-8"
+        aria-hidden
+      />
+    ),
+  },
+);
 
 type MarketingPageProps = {
   locale: Locale;
@@ -31,6 +44,48 @@ export function MarketingPage({
   caseStudies,
 }: MarketingPageProps) {
   const heroWords = home.hero.title.split(" ");
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.brand.name,
+    legalName: site.brand.legalName,
+    url: site.seo.siteUrl,
+    founder: {
+      "@type": "Person",
+      name: site.brand.founder,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: site.brand.country,
+      addressLocality: site.brand.location,
+    },
+    sameAs: site.socials.map((social) => social.href),
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: site.contact.email,
+      },
+    ],
+  };
+  const workJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: caseStudies.slice(0, 6).map((study, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: localizeCopy(study.title, locale),
+        description: localizeCopy(study.summary, locale),
+        url: toAbsoluteUrl(site.seo.siteUrl, `/${locale}/work/${study.slug}`),
+        creator: {
+          "@type": "Person",
+          name: site.brand.founder,
+        },
+      },
+    })),
+  };
   const experiments =
     locale === "en"
       ? [
@@ -88,6 +143,14 @@ export function MarketingPage({
 
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workJsonLd) }}
+      />
       <InteractiveLayer />
       <PublicHeader locale={locale} home={home} />
 

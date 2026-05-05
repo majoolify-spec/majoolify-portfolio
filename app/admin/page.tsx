@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAdminAccess, getAdminSignInUrl, getAdminSignOutUrl } from "../../lib/auth";
 import { getOrderedCaseStudies } from "../../lib/content";
@@ -11,6 +12,20 @@ import {
   saveSiteAction,
   uploadMediaAction,
 } from "./actions";
+
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+};
 
 function StatusBanner({
   status,

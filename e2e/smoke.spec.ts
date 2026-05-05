@@ -18,7 +18,7 @@ test("@smoke renders case studies and handles redacted content", async ({ page }
   await expect(page.getByRole("heading", { name: /AI frontend testing platform/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Live demo/i })).toBeVisible();
 
-  await page.goto("/en/work/confidential-agency-dashboard");
+  await page.goto("/en/work/website-screenshot-tool-expectation-alignment");
   await expect(page.getByText(/Some client details are intentionally withheld/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Live demo/i })).toHaveCount(0);
 });

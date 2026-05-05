@@ -4,15 +4,16 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Lock } from "lucide-react";
 import {
   getCaseStudyDetail,
-  getCaseStudySlugs,
+  getVisibleCaseStudySlugs,
   getSiteSettings,
   resolveLocale,
 } from "../../../../lib/content";
 import { alternateLocale, locales } from "../../../../lib/locale";
+import { getOgLocale, toAbsoluteUrl } from "../../../../lib/seo";
 import { LocaleSwitch, PublicFooter } from "../../../../components/site-chrome";
 
 export async function generateStaticParams() {
-  const slugs = await getCaseStudySlugs();
+  const slugs = await getVisibleCaseStudySlugs();
 
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
@@ -24,17 +25,44 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const resolvedLocale = resolveLocale(locale);
-  const detail = await getCaseStudyDetail(slug, resolvedLocale);
+  const [detail, site] = await Promise.all([
+    getCaseStudyDetail(slug, resolvedLocale),
+    getSiteSettings(),
+  ]);
+
+  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, `/${resolvedLocale}/work/${slug}`);
+  const preview = detail.meta.previewMedia[0];
+  const previewImage = toAbsoluteUrl(site.seo.siteUrl, preview.src);
 
   return {
     title: detail.meta.title[resolvedLocale],
     description: detail.meta.summary[resolvedLocale],
     alternates: {
-      canonical: `/${resolvedLocale}/work/${slug}`,
+      canonical: canonicalUrl,
       languages: {
-        en: `/en/work/${slug}`,
-        fr: `/fr/work/${slug}`,
+        en: toAbsoluteUrl(site.seo.siteUrl, `/en/work/${slug}`),
+        fr: toAbsoluteUrl(site.seo.siteUrl, `/fr/work/${slug}`),
       },
+    },
+    openGraph: {
+      type: "article",
+      title: detail.meta.title[resolvedLocale],
+      description: detail.meta.summary[resolvedLocale],
+      url: canonicalUrl,
+      locale: getOgLocale(resolvedLocale),
+      alternateLocale: [getOgLocale(alternateLocale(resolvedLocale))],
+      images: [
+        {
+          url: previewImage,
+          alt: preview.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: detail.meta.title[resolvedLocale],
+      description: detail.meta.summary[resolvedLocale],
+      images: [previewImage],
     },
   };
 }
@@ -53,9 +81,35 @@ export default async function CaseStudyPage({
 
   const preview = meta.previewMedia[0];
   const isRedacted = meta.privacy === "redacted";
+  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, `/${resolvedLocale}/work/${slug}`);
+  const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: meta.title[resolvedLocale],
+    description: meta.summary[resolvedLocale],
+    inLanguage: resolvedLocale,
+    creator: {
+      "@type": "Person",
+      name: site.brand.founder,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.brand.legalName,
+      url: site.seo.siteUrl,
+    },
+    url: canonicalUrl,
+    datePublished: `${meta.year}-01-01`,
+    dateModified: `${meta.year}-12-31`,
+    keywords: meta.stack.join(", "),
+    image: meta.previewMedia.map((asset) => toAbsoluteUrl(site.seo.siteUrl, asset.src)),
+  };
 
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
       <header className="border-b border-black/5 bg-[rgba(247,240,228,0.8)] backdrop-blur-xl">
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-4">
           <Link
@@ -104,7 +158,7 @@ export default async function CaseStudyPage({
                 <a
                   href={meta.publicLinks.demoUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="on-ink inline-flex items-center gap-2 rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold"
                 >
                   Live demo
@@ -115,7 +169,7 @@ export default async function CaseStudyPage({
                 <a
                   href={meta.publicLinks.repoUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-3 text-sm font-semibold"
                 >
                   Repository

@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
 };
 
 export default nextConfig;

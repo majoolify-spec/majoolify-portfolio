@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getHomeContent, getSiteSettings, getVisibleCaseStudies, resolveLocale } from "../../lib/content";
 import { locales } from "../../lib/locale";
+import { getOgLocale, toAbsoluteUrl } from "../../lib/seo";
 import { MarketingPage } from "../../components/marketing-page";
 
 export async function generateStaticParams() {
@@ -18,18 +19,41 @@ export async function generateMetadata({
     getHomeContent(resolvedLocale),
     getSiteSettings(),
   ]);
+  const canonicalPath = `/${resolvedLocale}`;
+  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, canonicalPath);
+  const ogImage = toAbsoluteUrl(site.seo.siteUrl, site.seo.defaultOgImage);
 
   return {
     title: home.seo.title,
     description: home.seo.description,
     alternates: {
-      canonical: `/${resolvedLocale}`,
+      canonical: canonicalUrl,
       languages: {
-        en: "/en",
-        fr: "/fr",
+        en: toAbsoluteUrl(site.seo.siteUrl, "/en"),
+        fr: toAbsoluteUrl(site.seo.siteUrl, "/fr"),
+        "x-default": toAbsoluteUrl(site.seo.siteUrl, "/en"),
       },
     },
     keywords: site.seo.keywords,
+    openGraph: {
+      title: home.seo.title,
+      description: home.seo.description,
+      url: canonicalUrl,
+      locale: getOgLocale(resolvedLocale),
+      alternateLocale: [getOgLocale(resolvedLocale === "en" ? "fr" : "en")],
+      images: [
+        {
+          url: ogImage,
+          alt: `${site.brand.name} showcase`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: home.seo.title,
+      description: home.seo.description,
+      images: [ogImage],
+    },
   };
 }
 

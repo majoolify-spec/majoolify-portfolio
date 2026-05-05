@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAdminAccess, getAdminSignInUrl } from "../../../../lib/auth";
@@ -5,6 +6,15 @@ import { getCaseStudyMeta } from "../../../../lib/content";
 import { readCaseStudyEditorFile } from "../../../../lib/editor-content";
 import { SubmitButton } from "../../../../components/admin/submit-button";
 import { saveCaseStudyAction } from "../../actions";
+
+export const metadata: Metadata = {
+  title: "Admin Case Study",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
+};
 
 function StatusBanner({
   status,

@@ -18,13 +18,13 @@ export function LocaleSwitch({
   const targetLocale = alternateLocale(locale);
 
   return (
-    <a
+    <Link
       href={href}
       className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-4 py-2 text-sm font-medium transition hover:-translate-y-0.5"
     >
       <Globe2 className="h-4 w-4" />
       {targetLocale.toUpperCase()}
-    </a>
+    </Link>
   );
 }
 
@@ -34,7 +34,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
   return (
     <header className="sticky top-0 z-30 border-b border-black/5 bg-[rgba(247,240,228,0.8)] backdrop-blur-xl">
       <div className="shell flex items-center justify-between gap-4 py-4">
-        <a href={base} className="flex items-center gap-3">
+        <Link href={base} className="flex items-center gap-3">
           <span className="on-ink inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--foreground)] text-sm font-semibold">
             M
           </span>
@@ -44,7 +44,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             </p>
             <p className="text-xs text-[var(--muted)]">Engineering studio</p>
           </div>
-        </a>
+        </Link>
         <nav className="hidden items-center gap-5 text-sm text-[var(--muted)] lg:flex">
           <a href={`${base}#work`} className="inline-flex min-h-9 min-w-10 items-center justify-center py-1">
             {home.nav.work}
@@ -100,7 +100,7 @@ export function PublicFooter({
               key={social.href}
               href={social.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium"
             >
               {social.label}

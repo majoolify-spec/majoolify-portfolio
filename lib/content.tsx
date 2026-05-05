@@ -140,10 +140,23 @@ export async function getVisibleCaseStudies() {
   return filterVisibleCaseStudies(studies);
 }
 
-export async function getCaseStudyDetail(slug: string, locale: Locale) {
+export async function getVisibleCaseStudySlugs() {
+  const studies = await getVisibleCaseStudies();
+  return studies.map((study) => study.slug);
+}
+
+export async function getCaseStudyDetail(
+  slug: string,
+  locale: Locale,
+  options?: { allowDraft?: boolean },
+) {
   const meta = await getCaseStudyMeta(slug).catch(() => null);
 
   if (!meta) {
+    notFound();
+  }
+
+  if (meta.status === "draft" && !options?.allowDraft) {
     notFound();
   }
 

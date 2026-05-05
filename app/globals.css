@@ -62,6 +62,7 @@ body {
     radial-gradient(280px 280px at var(--pointer-x) var(--pointer-y), rgba(15, 118, 110, 0.12), transparent 70%),
     radial-gradient(360px 320px at calc(var(--pointer-x) - 220px) calc(var(--pointer-y) + 180px), rgba(168, 85, 26, 0.08), transparent 74%);
   transition: opacity 240ms ease;
+  will-change: background-position, opacity;
 }
 
 body::before {
@@ -126,7 +127,7 @@ select {
 
 .glass-panel {
   background: var(--panel);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
@@ -234,7 +235,7 @@ select {
 .ambient-orb {
   position: absolute;
   border-radius: 999px;
-  filter: blur(24px);
+  filter: blur(20px);
   opacity: 0.42;
   pointer-events: none;
 }
@@ -248,7 +249,7 @@ select {
 }
 
 .fade-up {
-  animation: fade-up 0.8s ease both;
+  animation: fade-up 0.65s ease both;
 }
 
 .signature-headline {
@@ -259,8 +260,8 @@ select {
 }
 
 .signature-headline span {
-  opacity: 0;
-  transform: translateY(0.42em);
+  opacity: 1;
+  transform: translateY(0.2em);
   animation: word-rise 0.7s ease forwards;
   animation-delay: calc(var(--word-index) * 32ms);
 }
@@ -399,6 +400,11 @@ select {
   margin-top: 0.6rem;
 }
 
+.rhythm-shell > section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 .rhythm-title {
   position: relative;
   padding-left: 0.62rem;
@@ -434,6 +440,14 @@ select {
 }
 
 @media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: blur(10px);
+  }
+
+  .interactive-aura {
+    opacity: 0.72;
+  }
+
   .section-title {
     line-height: 0.96;
   }
@@ -450,18 +464,18 @@ select {
 
 @keyframes fade-up {
   from {
-    opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(12px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes word-rise {
+  from {
+    transform: translateY(0.2em);
+  }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
