@@ -1,0 +1,103 @@
+{
+  "seo": {
+    "title": "Majoolify | Software developer, frontend engineer, and AI prompt execution",
+    "description": "Agency-first portfolio for Majoolify, Ahmed Majoul's Tunisia-based software development studio focused on Next.js, frontend systems, and AI prompt workflows."
+  },
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "process": "Process",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Majoolify • software development agency",
+    "title": "Beautiful software products, sharp frontend systems, and AI workflows that actually ship.",
+    "intro": "Majoolify is the operating studio of Ahmed Majoul, a frontend-focused software developer and engineer from Tunisia. I build with Next.js, design for clarity, and shape AI prompt systems around real product constraints instead of demo energy.",
+    "primaryCtaLabel": "Start a project",
+    "secondaryCtaLabel": "See selected work",
+    "stats": [
+      {
+        "value": "Next.js",
+        "label": "Primary implementation environment"
+      },
+      {
+        "value": "EN / FR",
+        "label": "Bilingual product communication"
+      },
+      {
+        "value": "Majoolify",
+        "label": "Registered delivery entity"
+      }
+    ]
+  },
+  "credibility": {
+    "eyebrow": "Trust and legal framing",
+    "title": "Independent, registered, execution-first.",
+    "items": [
+      "Majoolify is a legal individual software development agency structure operated by Ahmed Majoul from Tunisia.",
+      "The studio works across freelance delivery, product implementation, and agency-style execution for frontend-heavy software.",
+      "Projects can be public, partially redacted, or private by default depending on client sensitivity and launch timing."
+    ]
+  },
+  "services": {
+    "eyebrow": "What Majoolify does",
+    "title": "Builds for teams that care about the product surface, not just the codebase.",
+    "intro": "The emphasis is on fast execution with a clean visual point of view: editorial landing pages, operational dashboards, content systems, and AI-assisted flows that still feel intentionally designed."
+  },
+  "work": {
+    "eyebrow": "Selected work",
+    "title": "Case studies with signals, not filler.",
+    "intro": "A mix of public work, product experiments, and redacted delivery where the implementation is real but the client details stay private."
+  },
+  "process": {
+    "eyebrow": "How work runs",
+    "title": "Shape, systemize, ship.",
+    "intro": "The workflow is designed to reduce drift between vision, interface, and production reality.",
+    "steps": [
+      {
+        "title": "1. Frame the product edge",
+        "description": "Clarify who the build is for, what it needs to prove, and which interface decisions actually move the outcome."
+      },
+      {
+        "title": "2. Build the system, not only the screen",
+        "description": "Translate the concept into route structure, reusable patterns, content model, and implementation constraints."
+      },
+      {
+        "title": "3. Refine until it feels authored",
+        "description": "Polish typography, pacing, motion, and hierarchy so the result feels deliberate rather than template-driven."
+      }
+    ]
+  },
+  "expertise": {
+    "eyebrow": "Execution profile",
+    "title": "Frontend-heavy delivery with strong AI product instincts.",
+    "intro": "The strongest fit is where product clarity, UI taste, and technical execution need to exist in the same person or studio.",
+    "points": [
+      "Next.js App Router products with structured server-side and content workflows.",
+      "Case-study and landing-page systems that need to look premium without collapsing into generic SaaS polish.",
+      "Prompt architecture for admin surfaces, copilots, and internal workflows that need repeatability, not novelty."
+    ]
+  },
+  "story": {
+    "eyebrow": "Founder and studio",
+    "title": "Ahmed Majoul builds as an engineer, refines like a product owner.",
+    "body": [
+      "I work mainly on frontend-heavy software with Next.js, but the real value is not limited to coding screens. I help shape how the product is presented, how the content is structured, and how the system keeps making sense as it grows.",
+      "Prompt engineering is part of that same discipline. The useful version is not just generating output; it is defining the interfaces, guardrails, and review loops that make AI features operational.",
+      "Majoolify exists as the agency layer around that work: a legal, client-facing vehicle for delivery, communication, and long-term software execution."
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "What collaborators notice",
+    "title": "The common feedback is clarity under pressure.",
+    "intro": "Speed matters, but only if the product still feels composed. That is usually where the strongest client signal comes from."
+  },
+  "contact": {
+    "eyebrow": "Inquiry-first",
+    "title": "Need a frontend partner or AI-minded builder who can execute directly?",
+    "intro": "Send the project brief, current constraints, and what needs to be true after launch. If the fit is right, I’ll propose the fastest practical path.",
+    "submitLabel": "Send inquiry",
+    "formSuccess": "Inquiry received. Ahmed will review it and get back to you."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "seo": {
+    "title": "Majoolify | Développeur logiciel, ingénieur frontend et exécution IA",
+    "description": "Portfolio orienté agence pour Majoolify, le studio logiciel d’Ahmed Majoul basé en Tunisie, spécialisé en Next.js, systèmes frontend et workflows IA."
+  },
+  "nav": {
+    "work": "Réalisations",
+    "services": "Services",
+    "process": "Process",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Majoolify • agence de développement logiciel",
+    "title": "Des produits logiciels beaux, des systèmes frontend solides et des workflows IA réellement livrables.",
+    "intro": "Majoolify est le studio opérationnel d’Ahmed Majoul, développeur logiciel et ingénieur orienté frontend basé en Tunisie. Je construis avec Next.js, je conçois avec clarté, et je structure des systèmes de prompts IA autour de contraintes produit réelles plutôt qu’autour de simples démos.",
+    "primaryCtaLabel": "Lancer un projet",
+    "secondaryCtaLabel": "Voir les réalisations",
+    "stats": [
+      {
+        "value": "Next.js",
+        "label": "Environnement principal d’implémentation"
+      },
+      {
+        "value": "EN / FR",
+        "label": "Communication produit bilingue"
+      },
+      {
+        "value": "Majoolify",
+        "label": "Entité légale de livraison"
+      }
+    ]
+  },
+  "credibility": {
+    "eyebrow": "Confiance et cadre légal",
+    "title": "Indépendant, enregistré, orienté exécution.",
+    "items": [
+      "Majoolify est une structure légale individuelle de développement logiciel opérée par Ahmed Majoul depuis la Tunisie.",
+      "Le studio intervient sur des livraisons freelance, des implémentations produit et une exécution de style agence pour des logiciels très orientés frontend.",
+      "Les projets peuvent être publics, partiellement anonymisés ou privés selon la sensibilité client et le calendrier de lancement."
+    ]
+  },
+  "services": {
+    "eyebrow": "Ce que fait Majoolify",
+    "title": "Des builds pour des équipes qui se soucient de la surface produit, pas seulement du code.",
+    "intro": "L’accent est mis sur une exécution rapide avec un vrai point de vue visuel : landing pages éditoriales, dashboards opérationnels, systèmes de contenu et flows assistés par IA qui restent intentionnellement conçus."
+  },
+  "work": {
+    "eyebrow": "Travaux sélectionnés",
+    "title": "Des études de cas avec du signal, pas du remplissage.",
+    "intro": "Un mélange de travaux publics, d’expérimentations produit et de livraisons anonymisées où l’implémentation est réelle mais les détails client restent privés."
+  },
+  "process": {
+    "eyebrow": "Méthode de travail",
+    "title": "Cadrer, systémiser, livrer.",
+    "intro": "Le workflow est conçu pour réduire l’écart entre la vision, l’interface et la réalité de production.",
+    "steps": [
+      {
+        "title": "1. Cadrer l’arête produit",
+        "description": "Clarifier pour qui le build existe, ce qu’il doit prouver et quelles décisions d’interface font réellement bouger le résultat."
+      },
+      {
+        "title": "2. Construire le système, pas seulement l’écran",
+        "description": "Traduire le concept en structure de routes, patterns réutilisables, modèle de contenu et contraintes d’implémentation."
+      },
+      {
+        "title": "3. Raffiner jusqu’à ce que cela semble signé",
+        "description": "Polir la typographie, le rythme, le motion et la hiérarchie pour que le résultat paraisse délibéré plutôt que générique."
+      }
+    ]
+  },
+  "expertise": {
+    "eyebrow": "Profil d’exécution",
+    "title": "Une livraison très frontend avec de vrais instincts produit IA.",
+    "intro": "Le meilleur terrain est celui où la clarté produit, le goût UI et l’exécution technique doivent exister dans la même personne ou le même studio.",
+    "points": [
+      "Produits Next.js App Router avec des workflows structurés côté serveur et côté contenu.",
+      "Systèmes de landing pages et d’études de cas qui doivent paraître premium sans tomber dans une esthétique SaaS générique.",
+      "Architecture de prompts pour des surfaces admin, copilotes et workflows internes qui demandent de la répétabilité plutôt que de la nouveauté."
+    ]
+  },
+  "story": {
+    "eyebrow": "Fondateur et studio",
+    "title": "Ahmed Majoul construit comme un ingénieur, affine comme un responsable produit.",
+    "body": [
+      "Je travaille surtout sur des logiciels très orientés frontend avec Next.js, mais la valeur réelle ne se limite pas au code des écrans. J’aide à structurer la présentation du produit, l’organisation du contenu et la cohérence du système au fur et à mesure qu’il grandit.",
+      "Le prompt engineering fait partie de cette même discipline. La version utile ne consiste pas seulement à générer un résultat ; elle consiste à définir les interfaces, les garde-fous et les boucles de revue qui rendent les fonctions IA réellement opérables.",
+      "Majoolify existe comme couche agence autour de ce travail : un véhicule légal et client-facing pour la livraison, la communication et l’exécution logicielle sur le long terme."
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Ce que les collaborateurs remarquent",
+    "title": "Le retour le plus fréquent : de la clarté sous pression.",
+    "intro": "La vitesse compte, mais seulement si le produit reste composé. C’est souvent là que le signal client devient le plus fort."
+  },
+  "contact": {
+    "eyebrow": "Prise de contact",
+    "title": "Besoin d’un partenaire frontend ou d’un builder orienté IA capable d’exécuter directement ?",
+    "intro": "Envoyez le brief, les contraintes actuelles et ce qui doit être vrai après le lancement. Si l’adéquation est bonne, je proposerai le chemin le plus pratique et le plus rapide.",
+    "submitLabel": "Envoyer la demande",
+    "formSuccess": "Demande reçue. Ahmed l’examinera et reviendra vers vous."
+  }
+}

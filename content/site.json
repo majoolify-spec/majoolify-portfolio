@@ -1,0 +1,166 @@
+{
+  "brand": {
+    "name": "Majoolify",
+    "legalName": "Majoolify Individual Software Development Agency",
+    "founder": "Ahmed Majoul",
+    "location": "Tunis, Tunisia",
+    "country": "Tunisia",
+    "taglines": {
+      "en": "Next.js engineering, frontend systems, and AI prompt execution.",
+      "fr": "Ingénierie Next.js, systèmes frontend et exécution IA orientée prompts."
+    },
+    "overview": {
+      "en": "Majoolify is Ahmed Majoul's legal software development studio for shipping premium frontend products, AI-assisted workflows, and execution-focused web platforms.",
+      "fr": "Majoolify est le studio légal de développement logiciel d’Ahmed Majoul pour livrer des produits frontend premium, des workflows assistés par IA et des plateformes web orientées exécution."
+    },
+    "legalBlurb": {
+      "en": "Majoolify is Ahmed Majoul's registered independent software development agency in Tunisia. The studio handles product builds, UI systems, frontend implementation, and AI workflow delivery.",
+      "fr": "Majoolify est l’agence indépendante de développement logiciel enregistrée d’Ahmed Majoul en Tunisie. Le studio prend en charge des produits, systèmes UI, implémentations frontend et workflows IA."
+    }
+  },
+  "contact": {
+    "email": "ahmed@majoolify.com",
+    "whatsapp": "+216 58 728 083",
+    "calendly": "",
+    "responseTime": {
+      "en": "Typical response time: within 24 hours for qualified project inquiries.",
+      "fr": "Temps de réponse habituel : sous 24 heures pour les demandes projet qualifiées."
+    },
+    "availabilityNote": {
+      "en": "Open to freelance product work, long-term frontend delivery, and AI-focused implementation missions.",
+      "fr": "Disponible pour des missions freelance produit, des collaborations frontend long terme et des implémentations orientées IA."
+    }
+  },
+  "socials": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/ahmedmajoul"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/ahmedmajoul/"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:ahmed@majoolify.com"
+    }
+  ],
+  "services": [
+    {
+      "slug": "nextjs-engineering",
+      "name": "Next.js product engineering",
+      "summary": {
+        "en": "From concept shaping to production-ready product surfaces, with attention to speed, editorial UI, and business clarity.",
+        "fr": "De la structuration du concept jusqu’aux interfaces prêtes pour la production, avec une attention particulière à la vitesse, à l’éditorial UI et à la clarté business."
+      },
+      "bullets": [
+        {
+          "en": "App Router builds, server actions, and production-grade routing patterns.",
+          "fr": "Builds App Router, server actions et patterns de routing prêts pour la production."
+        },
+        {
+          "en": "Landing pages, internal tools, dashboards, and SaaS interfaces.",
+          "fr": "Landing pages, outils internes, dashboards et interfaces SaaS."
+        },
+        {
+          "en": "Performance-minded implementation without generic visual output.",
+          "fr": "Implémentation orientée performance sans rendu visuel générique."
+        }
+      ],
+      "featured": true
+    },
+    {
+      "slug": "frontend-systems",
+      "name": "Frontend systems and design execution",
+      "summary": {
+        "en": "UI architecture that keeps product teams fast: reusable components, clean information hierarchy, and deliberate motion.",
+        "fr": "Une architecture UI qui garde les équipes produit rapides : composants réutilisables, hiérarchie de l’information claire et motion intentionnelle."
+      },
+      "bullets": [
+        {
+          "en": "Component libraries, content structures, and scalable page systems.",
+          "fr": "Libraries de composants, structures de contenu et systèmes de pages scalables."
+        },
+        {
+          "en": "Refinement passes for visual sharpness across desktop and mobile.",
+          "fr": "Passes de raffinement pour une netteté visuelle sur desktop et mobile."
+        },
+        {
+          "en": "Execution from messy briefs into coherent user-facing products.",
+          "fr": "Exécution depuis des briefs imparfaits vers des produits cohérents côté utilisateur."
+        }
+      ],
+      "featured": true
+    },
+    {
+      "slug": "ai-prompt-workflows",
+      "name": "AI prompt workflow design",
+      "summary": {
+        "en": "Prompt engineering anchored in product logic, UX constraints, and repeatable operational flows.",
+        "fr": "Prompt engineering ancré dans la logique produit, les contraintes UX et des flows opérationnels reproductibles."
+      },
+      "bullets": [
+        {
+          "en": "Prompt systems for internal tools, copilots, and content generation surfaces.",
+          "fr": "Systèmes de prompts pour outils internes, copilotes et interfaces de génération de contenu."
+        },
+        {
+          "en": "Human-in-the-loop flows with guardrails instead of one-shot demos.",
+          "fr": "Flows avec validation humaine et garde-fous plutôt que des démos one-shot."
+        },
+        {
+          "en": "Delivery across UI, admin, and operational layers.",
+          "fr": "Livraison à travers les couches UI, admin et opérationnelles."
+        }
+      ],
+      "featured": false
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Private founder",
+      "role": "Startup operator",
+      "company": "Confidential SaaS",
+      "quote": {
+        "en": "Ahmed moves fast without making the product look rushed. The implementation quality is disciplined, and the UI ends up sharper than the original brief.",
+        "fr": "Ahmed avance vite sans donner l’impression d’un produit bâclé. La qualité d’implémentation est disciplinée et l’UI finit plus précise que le brief initial."
+      }
+    },
+    {
+      "name": "Product collaborator",
+      "role": "Design and growth lead",
+      "company": "Independent software team",
+      "quote": {
+        "en": "He bridges design intent and actual shipping constraints very well. That matters a lot when the scope changes fast.",
+        "fr": "Il relie très bien l’intention design aux contraintes réelles de livraison. C’est essentiel quand le périmètre change vite."
+      }
+    },
+    {
+      "name": "AI workflow client",
+      "role": "Operations manager",
+      "company": "Automation project",
+      "quote": {
+        "en": "The prompt workflow was not just clever, it was usable. We got a system we could actually operate and iterate on.",
+        "fr": "Le workflow de prompts n’était pas seulement malin, il était utilisable. Nous avons obtenu un système réellement exploitable et améliorable."
+      }
+    }
+  ],
+  "seo": {
+    "siteUrl": "https://majoolify.dev",
+    "defaultTitle": "Majoolify | Next.js engineering and AI workflow delivery",
+    "defaultDescription": "Majoolify is Ahmed Majoul's Tunisia-based software development studio for Next.js engineering, frontend systems, and AI prompt design.",
+    "defaultOgImage": "/uploads/portfolio/default-preview.svg",
+    "keywords": [
+      "Ahmed Majoul",
+      "Majoolify",
+      "Next.js developer",
+      "frontend engineer",
+      "AI prompt engineer",
+      "software agency Tunisia"
+    ]
+  },
+  "admin": {
+    "repository": "majoolify/portfolio",
+    "branch": "main"
+  }
+}

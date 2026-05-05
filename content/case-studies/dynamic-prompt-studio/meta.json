@@ -1,0 +1,70 @@
+{
+  "slug": "dynamic-prompt-studio",
+  "status": "draft",
+  "privacy": "public",
+  "featured": true,
+  "year": 2026,
+  "clientLabel": "Dynamic Prompt Studio",
+  "role": "Prompt product design, frontend implementation, and admin flow structuring",
+  "services": [
+    "AI prompt workflow design",
+    "Frontend systems",
+    "Next.js product engineering"
+  ],
+  "stack": [
+    "Next.js",
+    "TypeScript",
+    "Prompt systems",
+    "Content workflows"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/dynamic-prompt-studio.svg",
+      "alt": "Dynamic prompt studio preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/uploads/portfolio/dynamic-prompt-studio-detail.svg",
+      "alt": "Dynamic prompt studio detail view",
+      "width": 1600,
+      "height": 1000
+    }
+  ],
+  "title": {
+    "en": "Dynamic prompt studio",
+    "fr": "Studio de prompts dynamique"
+  },
+  "summary": {
+    "en": "A content-heavy interface for shaping prompts, organizing reusable structures, and turning AI generation into a guided product workflow.",
+    "fr": "Une interface riche en contenu pour structurer des prompts, organiser des patterns réutilisables et transformer la génération IA en workflow produit guidé."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Reusable prompt workflow"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Structured authoring"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Editor-grade AI UI"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://example.com/demo/prompt-studio"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "confidential-agency-dashboard",
+  "status": "draft",
+  "privacy": "redacted",
+  "featured": false,
+  "year": 2025,
+  "clientLabel": "Confidential delivery",
+  "role": "Frontend lead and interface systems implementation",
+  "services": [
+    "Frontend systems",
+    "Next.js product engineering"
+  ],
+  "stack": [
+    "Next.js",
+    "Dashboard UX",
+    "Design systems"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/confidential-dashboard.svg",
+      "alt": "Confidential dashboard preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Confidential agency dashboard",
+    "fr": "Dashboard agence confidentiel"
+  },
+  "summary": {
+    "en": "A redacted internal product surface focused on operational clarity, multi-state workflows, and interface consistency across a delivery-heavy environment.",
+    "fr": "Une surface produit interne anonymisée, centrée sur la clarté opérationnelle, les workflows multi-états et la cohérence d’interface dans un environnement de delivery intensif."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Operations visibility"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Multi-state dashboard UX"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Private client work"
+    }
+  ],
+  "publicLinks": {}
+}

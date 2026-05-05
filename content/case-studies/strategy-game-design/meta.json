@@ -1,0 +1,62 @@
+{
+  "slug": "strategy-game-design",
+  "status": "live",
+  "privacy": "public",
+  "featured": false,
+  "year": 2026,
+  "clientLabel": "Strategy Game Design",
+  "role": "Interface design system and frontend prototype",
+  "services": [
+    "Frontend systems",
+    "Next.js product engineering"
+  ],
+  "stack": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Game UI"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/strategy-game-design.png",
+      "alt": "Strategy game design preview",
+      "width": 932,
+      "height": 810
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Strategy game design",
+    "fr": "Design de jeu de stratégie"
+  },
+  "summary": {
+    "en": "A strategy-game interface concept focused on readability, action hierarchy, and responsive HUD composition.",
+    "fr": "Un concept d’interface de jeu de stratégie orienté lisibilité, hiérarchie d’action et composition HUD responsive."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Game UI system draft"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Decision clarity in dense views"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Experimental product direction"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/oLHSkLRXnnVMZHM2isA3M1/Strategy-game-design"
+  }
+}

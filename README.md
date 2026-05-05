@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Majoolify Portfolio
 
-## Getting Started
+Agency-first portfolio for **Majoolify** (Ahmed Majoul), built with Next.js App Router and a live Git-backed backoffice.
 
-First, run the development server:
+## Stack
 
+- Next.js 16 (App Router)
+- TypeScript
+- Auth.js (GitHub OAuth)
+- Zod validation
+- MDX case-study bodies
+- Resend contact delivery
+
+## Routes
+
+- `/` redirects to `/en`
+- `/en` and `/fr` localized homepage
+- `/[locale]/work/[slug]` case-study detail page
+- `/admin` backoffice
+- `/admin/case-studies/[slug]` case-study editor
+- `/api/contact` inquiry endpoint
+
+## Content structure
+
+- `content/site.json`
+- `content/locales/en/home.json`
+- `content/locales/fr/home.json`
+- `content/case-studies/<slug>/meta.json`
+- `content/case-studies/<slug>/en.mdx`
+- `content/case-studies/<slug>/fr.mdx`
+- `public/uploads/portfolio/*`
+
+## Local setup
+
+1. Install dependencies:
+```bash
+npm install
+```
+2. Create local environment file:
+```bash
+cp .env.example .env.local
+```
+3. Start dev server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+4. Open [http://localhost:3000/en](http://localhost:3000/en).
+
+## Environment variables
+
+Required for production auth:
+- `AUTH_SECRET`
+- `GITHUB_ID`
+- `GITHUB_SECRET`
+- `GITHUB_ADMIN_USERS`
+
+Required for GitHub content publishing:
+- `GITHUB_CONTENTS_TOKEN`
+- `GITHUB_REPO_OWNER`
+- `GITHUB_REPO_NAME`
+- optional: `GITHUB_REPO_BRANCH`
+
+Required for contact email delivery:
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL`
+
+Development-only helpers:
+- `ADMIN_BYPASS_TOKEN`
+- `ADMIN_PUBLISH_DRY_RUN`
+
+## Backoffice publishing modes
+
+- `github` mode: pushes content updates through GitHub Contents API.
+- `dry-run` mode (`ADMIN_PUBLISH_DRY_RUN=1`): validates writes without persisting.
+- `local` fallback mode: writes to local filesystem (useful for local development only).
+
+## Verification
+
+```bash
+npm run verify
+npm run e2e:smoke
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run verify` runs lint, typecheck, unit tests, and production build.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use [DEPLOYMENT.md](C:\Users\majou\Desktop\Figma projects\majoolify-portfolio\DEPLOYMENT.md) for a step-by-step Vercel and GitHub setup checklist.

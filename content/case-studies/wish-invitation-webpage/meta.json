@@ -1,0 +1,61 @@
+{
+  "slug": "wish-invitation-webpage",
+  "status": "live",
+  "privacy": "public",
+  "featured": false,
+  "year": 2026,
+  "clientLabel": "Wish Invitation Webpage",
+  "role": "Creative frontend build and interaction polish",
+  "services": [
+    "Frontend systems",
+    "Next.js product engineering"
+  ],
+  "stack": [
+    "Next.js",
+    "Interactive UI",
+    "Responsive layout"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/wish-invitation-webpage.svg",
+      "alt": "Wish invitation webpage preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Wish invitation webpage",
+    "fr": "Page web d’invitation Wish"
+  },
+  "summary": {
+    "en": "A lightweight invitation-page concept blending editorial layout, expressive typography, and mobile-first interaction cues.",
+    "fr": "Un concept de page d’invitation léger combinant layout éditorial, typographie expressive et interactions mobile-first."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Creative invite page concept"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Emotion + clarity in micro interactions"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Narrative UI experiment"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/d2v3yfb2KBsNPp37Wy4MWC/wish-Invitation-Webpage--Copy-"
+  }
+}

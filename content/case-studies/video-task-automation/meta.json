@@ -1,0 +1,61 @@
+{
+  "slug": "video-task-automation",
+  "status": "live",
+  "privacy": "public",
+  "featured": true,
+  "year": 2026,
+  "clientLabel": "Video Task Automation",
+  "role": "Workflow architecture and frontend orchestration",
+  "services": [
+    "AI prompt workflow design",
+    "Next.js product engineering"
+  ],
+  "stack": [
+    "Next.js",
+    "Automation workflows",
+    "Task orchestration"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/video-task-automation.svg",
+      "alt": "Video task automation preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Video task automation",
+    "fr": "Automatisation de tâches vidéo"
+  },
+  "summary": {
+    "en": "An automation-oriented product concept for managing repeatable video workflows from task intake to output delivery.",
+    "fr": "Un concept produit orienté automatisation pour gérer des workflows vidéo répétables, de l’entrée des tâches jusqu’à la livraison."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Workflow automation blueprint"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Task reliability and throughput"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Productized operations concept"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/xJfJiMX6WDEOC8UgfSwdPm/Video-Task-Automation5"
+  }
+}

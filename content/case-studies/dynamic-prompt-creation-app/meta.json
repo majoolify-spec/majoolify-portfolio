@@ -1,0 +1,62 @@
+{
+  "slug": "dynamic-prompt-creation-app",
+  "status": "live",
+  "privacy": "public",
+  "featured": true,
+  "year": 2026,
+  "clientLabel": "Dynamic Prompt Creation App",
+  "role": "Product shaping and frontend execution",
+  "services": [
+    "AI prompt workflow design",
+    "Frontend systems"
+  ],
+  "stack": [
+    "Next.js",
+    "TypeScript",
+    "Prompt design",
+    "Workflow UX"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/dynamic-prompt-creation-app.png",
+      "alt": "Dynamic prompt creation app preview",
+      "width": 1440,
+      "height": 1608
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Dynamic prompt creation app",
+    "fr": "Application de création de prompts dynamique"
+  },
+  "summary": {
+    "en": "An evolving prompt-authoring product focused on reusable templates, governance layers, and faster publishing from structured inputs.",
+    "fr": "Un produit d’édition de prompts en évolution, centré sur des templates réutilisables, des couches de gouvernance et une publication plus rapide à partir d’entrées structurées."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Template-first prompt authoring"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Editorial control and speed"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "In-progress product build"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/IUdFRp6jQ7g0wbG0wbsLbj/Dynamic-Prompt-Creation-App--Copy---Copy---Copy---Copy---Copy-2"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "website-screenshot-tool",
+  "status": "live",
+  "privacy": "public",
+  "featured": true,
+  "year": 2026,
+  "clientLabel": "Website Screenshot Tool",
+  "role": "Frontend implementation and UX flow design",
+  "services": [
+    "Next.js product engineering",
+    "Frontend systems"
+  ],
+  "stack": [
+    "Next.js",
+    "Playwright",
+    "TypeScript",
+    "Automation UI"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/website-screenshot-tool.png",
+      "alt": "Website screenshot tool preview",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Website screenshot tool",
+    "fr": "Outil de capture de sites web"
+  },
+  "summary": {
+    "en": "A utility product for capturing consistent website screenshots across predefined device breakpoints and shareable review contexts.",
+    "fr": "Un produit utilitaire pour capturer des screenshots de sites web de façon cohérente sur des breakpoints prédéfinis avec un contexte de revue partageable."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Repeatable screenshot workflow"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Consistency across devices"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Internal quality tool"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/ZIu9nsIZN7S7vhQflEQ0zs/Website-Screenshot-Tool"
+  }
+}

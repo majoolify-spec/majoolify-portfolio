@@ -1,0 +1,16 @@
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" fill="#EEDFCC"/>
+  <rect x="60" y="60" width="1480" height="980" rx="40" fill="#101C28"/>
+  <rect x="126" y="132" width="1348" height="70" rx="28" fill="#F7EBDD" fill-opacity="0.08"/>
+  <rect x="160" y="156" width="240" height="22" rx="11" fill="#F7EBDD" fill-opacity="0.66"/>
+  <rect x="160" y="264" width="1280" height="680" rx="34" fill="#F7EBDD" fill-opacity="0.07"/>
+  <rect x="208" y="320" width="240" height="20" rx="10" fill="#F7EBDD" fill-opacity="0.7"/>
+  <rect x="208" y="368" width="1020" height="164" rx="30" fill="#F7EBDD" fill-opacity="0.08"/>
+  <rect x="208" y="576" width="220" height="104" rx="26" fill="#A8551A"/>
+  <rect x="456" y="576" width="220" height="104" rx="26" fill="#0F766E"/>
+  <rect x="704" y="576" width="220" height="104" rx="26" fill="#F7EBDD" fill-opacity="0.12"/>
+  <rect x="952" y="576" width="220" height="104" rx="26" fill="#F7EBDD" fill-opacity="0.12"/>
+  <rect x="1200" y="576" width="190" height="104" rx="26" fill="#F7EBDD" fill-opacity="0.12"/>
+  <rect x="208" y="730" width="560" height="18" rx="9" fill="#F7EBDD" fill-opacity="0.28"/>
+  <rect x="208" y="768" width="430" height="18" rx="9" fill="#F7EBDD" fill-opacity="0.18"/>
+</svg>

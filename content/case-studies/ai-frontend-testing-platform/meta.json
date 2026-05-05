@@ -1,0 +1,71 @@
+{
+  "slug": "ai-frontend-testing-platform",
+  "status": "live",
+  "privacy": "public",
+  "featured": true,
+  "year": 2026,
+  "clientLabel": "AI Frontend Testing Platform",
+  "role": "Product design execution, frontend architecture, and delivery",
+  "services": [
+    "Next.js product engineering",
+    "Frontend systems",
+    "AI prompt workflow design"
+  ],
+  "stack": [
+    "Next.js",
+    "TypeScript",
+    "Playwright",
+    "Supabase",
+    "Prompt design"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/ai-frontend-testing.svg",
+      "alt": "AI frontend testing platform preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/uploads/portfolio/ai-frontend-testing-detail.svg",
+      "alt": "AI frontend testing detail layout",
+      "width": 1600,
+      "height": 1000
+    }
+  ],
+  "title": {
+    "en": "AI frontend testing platform",
+    "fr": "Plateforme de test frontend assistée par IA"
+  },
+  "summary": {
+    "en": "A multi-flow product surface for testing frontend states, capturing validation signals, and tightening the loop between UI review and AI-assisted execution.",
+    "fr": "Une surface produit multi-flux pour tester des états frontend, capturer des signaux de validation et resserrer la boucle entre revue UI et exécution assistée par IA."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Unified testing workspace"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Review speed + UX clarity"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "AI-assisted QA flow"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/ar2wZ4yTq96pK0utIogxNc/AI-Frontend-Testing-Platform"
+  }
+}

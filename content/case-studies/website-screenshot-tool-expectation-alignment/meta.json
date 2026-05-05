@@ -1,0 +1,61 @@
+{
+  "slug": "website-screenshot-tool-expectation-alignment",
+  "status": "live",
+  "privacy": "public",
+  "featured": false,
+  "year": 2026,
+  "clientLabel": "Website Screenshot Tool - expectation alignment",
+  "role": "Workflow refinement and collaboration UX",
+  "services": [
+    "Frontend systems",
+    "AI prompt workflow design"
+  ],
+  "stack": [
+    "Next.js",
+    "Review workflows",
+    "Automation QA"
+  ],
+  "previewMedia": [
+    {
+      "src": "/uploads/portfolio/website-screenshot-tool-expectation-alignment.svg",
+      "alt": "Expectation alignment screenshot workflow preview",
+      "width": 1600,
+      "height": 1100
+    }
+  ],
+  "gallery": [],
+  "title": {
+    "en": "Screenshot workflow expectation alignment",
+    "fr": "Alignement d’attentes pour workflow de captures"
+  },
+  "summary": {
+    "en": "A refinement track focused on reducing ambiguity in screenshot reviews through clearer acceptance framing and output standards.",
+    "fr": "Une piste de raffinement visant à réduire l’ambiguïté dans les revues de screenshots grâce à un meilleur cadrage d’acceptation et des standards de rendu."
+  },
+  "outcomes": [
+    {
+      "label": {
+        "en": "Outcome",
+        "fr": "Résultat"
+      },
+      "value": "Clearer review contracts"
+    },
+    {
+      "label": {
+        "en": "Focus",
+        "fr": "Focus"
+      },
+      "value": "Expectation clarity"
+    },
+    {
+      "label": {
+        "en": "Positioning",
+        "fr": "Positionnement"
+      },
+      "value": "Process refinement stream"
+    }
+  ],
+  "publicLinks": {
+    "demoUrl": "https://www.figma.com/design/ZIu9nsIZN7S7vhQflEQ0zs/Website-Screenshot-Tool"
+  }
+}
