@@ -9,7 +9,13 @@ import {
   resolveLocale,
 } from "../../../../lib/content";
 import { alternateLocale, locales } from "../../../../lib/locale";
-import { getOgLocale, toAbsoluteUrl } from "../../../../lib/seo";
+import {
+  getCaseStudyLanguageAlternates,
+  getCaseStudyPath,
+  getCaseStudyUrl,
+  getOgLocale,
+  toAbsoluteUrl,
+} from "../../../../lib/seo";
 import { LocaleSwitch, PublicFooter } from "../../../../components/site-chrome";
 
 export async function generateStaticParams() {
@@ -30,7 +36,7 @@ export async function generateMetadata({
     getSiteSettings(),
   ]);
 
-  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, `/${resolvedLocale}/work/${slug}`);
+  const canonicalUrl = getCaseStudyUrl(site.seo.siteUrl, resolvedLocale, slug);
   const preview = detail.meta.previewMedia[0];
   const previewImage = toAbsoluteUrl(site.seo.siteUrl, preview.src);
 
@@ -39,10 +45,7 @@ export async function generateMetadata({
     description: detail.meta.summary[resolvedLocale],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: toAbsoluteUrl(site.seo.siteUrl, `/en/work/${slug}`),
-        fr: toAbsoluteUrl(site.seo.siteUrl, `/fr/work/${slug}`),
-      },
+      languages: getCaseStudyLanguageAlternates(site.seo.siteUrl, slug),
     },
     openGraph: {
       type: "article",
@@ -81,7 +84,7 @@ export default async function CaseStudyPage({
 
   const preview = meta.previewMedia[0];
   const isRedacted = meta.privacy === "redacted";
-  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, `/${resolvedLocale}/work/${slug}`);
+  const canonicalUrl = getCaseStudyUrl(site.seo.siteUrl, resolvedLocale, slug);
   const caseStudyJsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -120,10 +123,7 @@ export default async function CaseStudyPage({
             {resolvedLocale === "en" ? "Back to portfolio" : "Retour au portfolio"}
           </Link>
           <div className="flex items-center gap-3">
-            <LocaleSwitch
-              locale={resolvedLocale}
-              href={`/${alternateLocale(resolvedLocale)}/work/${slug}`}
-            />
+            <LocaleSwitch locale={resolvedLocale} href={getCaseStudyPath(alternateLocale(resolvedLocale), slug)} />
             <Link href="/admin" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium">
               Admin
             </Link>

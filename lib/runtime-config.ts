@@ -1,3 +1,5 @@
+import { getPublishMode, type PublishMode } from "./publish-mode";
+
 export type ConfigAreaStatus = {
   ready: boolean;
   missing: string[];
@@ -5,7 +7,7 @@ export type ConfigAreaStatus = {
 
 export type RuntimeConfigStatus = {
   auth: ConfigAreaStatus;
-  publish: ConfigAreaStatus & { mode: "github" | "local" | "dry-run" };
+  publish: ConfigAreaStatus & { mode: PublishMode };
   contact: ConfigAreaStatus;
 };
 
@@ -15,22 +17,6 @@ function hasEnv(name: string) {
 
 function collectMissing(keys: string[]) {
   return keys.filter((key) => !hasEnv(key));
-}
-
-function getPublishMode(): "github" | "local" | "dry-run" {
-  if (process.env.ADMIN_PUBLISH_DRY_RUN === "1") {
-    return "dry-run";
-  }
-
-  if (
-    hasEnv("GITHUB_CONTENTS_TOKEN") &&
-    hasEnv("GITHUB_REPO_OWNER") &&
-    hasEnv("GITHUB_REPO_NAME")
-  ) {
-    return "github";
-  }
-
-  return "local";
 }
 
 export function getRuntimeConfigStatus(): RuntimeConfigStatus {

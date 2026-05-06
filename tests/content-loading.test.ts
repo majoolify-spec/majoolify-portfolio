@@ -1,5 +1,5 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { readdir, readFile } from "node:fs/promises";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { caseStudyMetaSchema, homeContentSchema, siteSettingsSchema } from "../lib/schemas";
 
@@ -19,22 +19,24 @@ describe("content loading", () => {
     expect(homeFr.hero.title).toContain("Des produits logiciels");
   });
 
-  it("parses all case study metadata files", async () => {
-    const slugs = [
-      "ai-frontend-testing-platform",
-      "dynamic-prompt-studio",
-      "confidential-agency-dashboard",
-    ];
+  it("parses all case study directories and validates required files", async () => {
+    const caseStudiesRoot = resolve(process.cwd(), "content", "case-studies");
+    const entries = await readdir(caseStudiesRoot, { withFileTypes: true });
+    const slugs = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 
     const studies = await Promise.all(
-      slugs.map((slug) =>
-        readJson(`content/case-studies/${slug}/meta.json`).then((value) =>
-          caseStudyMetaSchema.parse(value),
-        ),
-      ),
+      slugs.map(async (slug) => {
+        const basePath = join("content", "case-studies", slug);
+        const value = await readJson(`${basePath}/meta.json`);
+        await readFile(resolve(process.cwd(), `${basePath}/en.mdx`), "utf8");
+        await readFile(resolve(process.cwd(), `${basePath}/fr.mdx`), "utf8");
+        return caseStudyMetaSchema.parse(value);
+      }),
     );
 
-    expect(studies).toHaveLength(3);
+    expect(slugs.length).toBeGreaterThan(0);
+    expect(studies).toHaveLength(slugs.length);
+    expect(studies.every((study) => slugs.includes(study.slug))).toBe(true);
     expect(studies.some((study) => study.privacy === "redacted")).toBe(true);
   });
 });

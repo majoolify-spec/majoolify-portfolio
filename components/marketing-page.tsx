@@ -16,7 +16,7 @@ import { PublicFooter, PublicHeader } from "./site-chrome";
 import { WorkShowcase } from "./work-showcase";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta, HomeContent, SiteSettings } from "../lib/schemas";
-import { toAbsoluteUrl } from "../lib/seo";
+import { getCaseStudyUrl } from "../lib/seo";
 
 const ContactForm = dynamic(
   () => import("./contact-form").then((module) => module.ContactForm),
@@ -78,7 +78,7 @@ export function MarketingPage({
         "@type": "CreativeWork",
         name: localizeCopy(study.title, locale),
         description: localizeCopy(study.summary, locale),
-        url: toAbsoluteUrl(site.seo.siteUrl, `/${locale}/work/${study.slug}`),
+        url: getCaseStudyUrl(site.seo.siteUrl, locale, study.slug),
         creator: {
           "@type": "Person",
           name: site.brand.founder,

@@ -6,6 +6,8 @@ import { readHomeEditorFile, readSiteEditorFile } from "../../lib/editor-content
 import { getPublishStatusLabel } from "../../lib/publish-mode";
 import { getRuntimeConfigStatus } from "../../lib/runtime-config";
 import { SubmitButton } from "../../components/admin/submit-button";
+import { StatusBanner } from "../../components/admin/status-banner";
+import { parseStatusAndDetail } from "../../lib/admin-search-params";
 import {
   createCaseStudyAction,
   saveHomeAction,
@@ -26,33 +28,6 @@ export const metadata: Metadata = {
     },
   },
 };
-
-function StatusBanner({
-  status,
-  detail,
-}: {
-  status?: string;
-  detail?: string;
-}) {
-  if (!status) {
-    return null;
-  }
-
-  const isError = status.includes("error");
-
-  return (
-    <div
-      className={`mb-6 rounded-[1.4rem] border px-4 py-3 text-sm ${
-        isError
-          ? "border-red-300 bg-red-50 text-red-700"
-          : "border-emerald-200 bg-emerald-50 text-emerald-700"
-      }`}
-    >
-      <strong className="font-semibold">{status}</strong>
-      {detail ? <span className="ml-2">{detail}</span> : null}
-    </div>
-  );
-}
 
 function SignInScreen() {
   return (
@@ -147,9 +122,7 @@ export default async function AdminPage({
     return <SignInScreen />;
   }
 
-  const params = await searchParams;
-  const status = typeof params.status === "string" ? params.status : undefined;
-  const detail = typeof params.detail === "string" ? params.detail : undefined;
+  const { status, detail } = parseStatusAndDetail(await searchParams);
 
   const [siteJson, homeEnJson, homeFrJson, caseStudies] = await Promise.all([
     readSiteEditorFile(),

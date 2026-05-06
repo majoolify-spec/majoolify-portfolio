@@ -11,9 +11,6 @@ import {
   caseStudyMetaSchema,
   homeContentSchema,
   siteSettingsSchema,
-  type CaseStudyMeta,
-  type HomeContent,
-  type SiteSettings,
 } from "./schemas";
 
 const CONTENT_ROOT = join(process.cwd(), "content");
@@ -130,11 +127,6 @@ export async function getOrderedCaseStudies() {
   return orderCaseStudies(studies);
 }
 
-export async function getFeaturedCaseStudies(limit = 3) {
-  const studies = await getOrderedCaseStudies();
-  return filterVisibleCaseStudies(studies).slice(0, limit);
-}
-
 export async function getVisibleCaseStudies() {
   const studies = await getOrderedCaseStudies();
   return filterVisibleCaseStudies(studies);
@@ -189,8 +181,4 @@ export function resolveLocale(locale: string): Locale {
   }
 
   return locale;
-}
-
-export function formatJson(value: SiteSettings | HomeContent | CaseStudyMeta) {
-  return `${JSON.stringify(value, null, 2)}\n`;
 }

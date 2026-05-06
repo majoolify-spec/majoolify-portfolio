@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { getAdminAccess, getAdminSignInUrl } from "../../../../lib/auth";
 import { getCaseStudyMeta } from "../../../../lib/content";
 import { readCaseStudyEditorFile } from "../../../../lib/editor-content";
+import { parseStatusAndDetail } from "../../../../lib/admin-search-params";
 import { SubmitButton } from "../../../../components/admin/submit-button";
+import { StatusBanner } from "../../../../components/admin/status-banner";
 import { saveCaseStudyAction } from "../../actions";
 
 export const metadata: Metadata = {
@@ -15,33 +17,6 @@ export const metadata: Metadata = {
     nocache: true,
   },
 };
-
-function StatusBanner({
-  status,
-  detail,
-}: {
-  status?: string;
-  detail?: string;
-}) {
-  if (!status) {
-    return null;
-  }
-
-  const isError = status.includes("error");
-
-  return (
-    <div
-      className={`mb-6 rounded-[1.4rem] border px-4 py-3 text-sm ${
-        isError
-          ? "border-red-300 bg-red-50 text-red-700"
-          : "border-emerald-200 bg-emerald-50 text-emerald-700"
-      }`}
-    >
-      <strong className="font-semibold">{status}</strong>
-      {detail ? <span className="ml-2">{detail}</span> : null}
-    </div>
-  );
-}
 
 export default async function CaseStudyAdminPage({
   params,
@@ -66,9 +41,7 @@ export default async function CaseStudyAdminPage({
   }
 
   const { slug } = await params;
-  const paramsState = await searchParams;
-  const status = typeof paramsState.status === "string" ? paramsState.status : undefined;
-  const detail = typeof paramsState.detail === "string" ? paramsState.detail : undefined;
+  const { status, detail } = parseStatusAndDetail(await searchParams);
 
   const meta = await getCaseStudyMeta(slug).catch(() => null);
 

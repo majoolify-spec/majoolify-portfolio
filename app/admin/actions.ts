@@ -2,6 +2,14 @@
 
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import {
+  caseStudyExists,
+  getDefaultCaseStudyMeta,
+  getUploadValidationError,
+  sanitizeFilename,
+  sanitizeFolder,
+  slugify,
+} from "../../lib/admin-content";
 import { getAdminAccess } from "../../lib/auth";
 import {
   getCaseStudyRevalidationTargets,
@@ -61,68 +69,6 @@ function parseJson<T>(value: FormDataEntryValue | null, parser: { parse: (input:
   return parser.parse(JSON.parse(value));
 }
 
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function sanitizeFolder(value: string) {
-  return value
-    .replace(/\\/g, "/")
-    .split("/")
-    .map((segment) => slugify(segment))
-    .filter(Boolean)
-    .join("/");
-}
-
-function sanitizeFilename(value: string) {
-  const parts = value.split(".");
-  const extension = parts.length > 1 ? parts.pop() : "";
-  const name = slugify(parts.join(".") || "asset");
-  return extension ? `${name}.${extension.toLowerCase()}` : name;
-}
-
-function defaultCaseStudyMeta(slug: string) {
-  return {
-    slug,
-    status: "draft",
-    privacy: "public",
-    featured: false,
-    year: new Date().getFullYear(),
-    clientLabel: "New client",
-    role: "Lead frontend engineer",
-    services: ["Next.js engineering"],
-    stack: ["Next.js", "TypeScript"],
-    previewMedia: [
-      {
-        src: "/uploads/portfolio/default-preview.svg",
-        alt: "Default case study preview",
-        width: 1600,
-        height: 1100,
-      },
-    ],
-    gallery: [],
-    title: {
-      en: "New case study",
-      fr: "Nouvelle étude de cas",
-    },
-    summary: {
-      en: "Replace this summary with the actual project context, outcome, and positioning.",
-      fr: "Remplacez ce résumé par le contexte réel du projet, son résultat et son positionnement.",
-    },
-    outcomes: [
-      {
-        label: { en: "Outcome", fr: "Résultat" },
-        value: "TBD",
-      },
-    ],
-    publicLinks: {},
-  };
-}
-
 export async function saveSiteAction(formData: FormData) {
   await requireAdmin();
 
@@ -179,11 +125,19 @@ export async function createCaseStudyAction(formData: FormData) {
     redirectWithStatus("/admin", "create-error", "Provide a valid slug.");
   }
 
+  if (await caseStudyExists(slug)) {
+    redirectWithStatus(
+      "/admin",
+      "create-error",
+      `Case study "${slug}" already exists.`,
+    );
+  }
+
   const result = await publishFiles(
     [
       {
         path: `content/case-studies/${slug}/meta.json`,
-        content: `${JSON.stringify(defaultCaseStudyMeta(slug), null, 2)}\n`,
+        content: `${JSON.stringify(getDefaultCaseStudyMeta(slug), null, 2)}\n`,
       },
       {
         path: `content/case-studies/${slug}/en.mdx`,
@@ -255,6 +209,11 @@ export async function uploadMediaAction(formData: FormData) {
 
   if (!(file instanceof File) || file.size === 0) {
     redirectWithStatus("/admin", "upload-error", "Choose a file to upload.");
+  }
+
+  const uploadValidationError = getUploadValidationError(file);
+  if (uploadValidationError) {
+    redirectWithStatus("/admin", "upload-error", uploadValidationError);
   }
 
   const folder = sanitizeFolder(String(formData.get("folder") || ""));

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { getHomeContent, getSiteSettings, getVisibleCaseStudies, resolveLocale } from "../../lib/content";
 import { locales } from "../../lib/locale";
-import { getOgLocale, toAbsoluteUrl } from "../../lib/seo";
+import {
+  getHomeLanguageAlternates,
+  getLocaleHomeUrl,
+  getOgLocale,
+  toAbsoluteUrl,
+} from "../../lib/seo";
 import { MarketingPage } from "../../components/marketing-page";
 
 export async function generateStaticParams() {
@@ -19,8 +24,7 @@ export async function generateMetadata({
     getHomeContent(resolvedLocale),
     getSiteSettings(),
   ]);
-  const canonicalPath = `/${resolvedLocale}`;
-  const canonicalUrl = toAbsoluteUrl(site.seo.siteUrl, canonicalPath);
+  const canonicalUrl = getLocaleHomeUrl(site.seo.siteUrl, resolvedLocale);
   const ogImage = toAbsoluteUrl(site.seo.siteUrl, site.seo.defaultOgImage);
 
   return {
@@ -28,11 +32,7 @@ export async function generateMetadata({
     description: home.seo.description,
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: toAbsoluteUrl(site.seo.siteUrl, "/en"),
-        fr: toAbsoluteUrl(site.seo.siteUrl, "/fr"),
-        "x-default": toAbsoluteUrl(site.seo.siteUrl, "/en"),
-      },
+      languages: getHomeLanguageAlternates(site.seo.siteUrl),
     },
     keywords: site.seo.keywords,
     openGraph: {
