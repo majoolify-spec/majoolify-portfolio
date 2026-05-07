@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { BUTTON_PRIMARY_DISABLED } from "../lib/ui-classes";
 
 type ContactFormProps = {
   locale: "en" | "fr";
@@ -136,7 +137,7 @@ export function ContactForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          className="on-ink inline-flex items-center justify-center rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 disabled:opacity-60"
+          className={BUTTON_PRIMARY_DISABLED}
         >
           {status === "loading" ? labels.sending : submitLabel}
         </button>

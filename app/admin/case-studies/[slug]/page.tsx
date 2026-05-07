@@ -7,6 +7,7 @@ import { readCaseStudyEditorFile } from "../../../../lib/editor-content";
 import { parseStatusAndDetail } from "../../../../lib/admin-search-params";
 import { SubmitButton } from "../../../../components/admin/submit-button";
 import { StatusBanner } from "../../../../components/admin/status-banner";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../../../lib/ui-classes";
 import { saveCaseStudyAction } from "../../actions";
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ export default async function CaseStudyAdminPage({
       <main className="flex min-h-screen items-center justify-center px-6 py-20">
         <div className="glass-panel max-w-xl rounded-[2rem] p-8 text-center">
           <h1 className="section-title text-[3rem]">Admin sign-in required</h1>
-          <a href={getAdminSignInUrl()} className="on-ink mt-6 inline-flex rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold">
+          <a href={getAdminSignInUrl()} className={`${BUTTON_PRIMARY} mt-6`}>
             Sign in
           </a>
         </div>
@@ -65,13 +66,13 @@ export default async function CaseStudyAdminPage({
             <p className="mt-4 text-[var(--muted)]">{meta.slug}</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/admin" className="rounded-full border border-[var(--border)] px-4 py-3 text-sm font-semibold">
+            <Link href="/admin" className={BUTTON_SECONDARY}>
               Back to admin
             </Link>
-            <a href={`/en/work/${slug}`} className="rounded-full border border-[var(--border)] px-4 py-3 text-sm font-semibold">
+            <a href={`/en/work/${slug}`} className={BUTTON_SECONDARY}>
               EN preview
             </a>
-            <a href={`/fr/work/${slug}`} className="on-ink rounded-full bg-[var(--foreground)] px-4 py-3 text-sm font-semibold">
+            <a href={`/fr/work/${slug}`} className={BUTTON_PRIMARY}>
               FR preview
             </a>
           </div>
@@ -81,7 +82,7 @@ export default async function CaseStudyAdminPage({
 
         <form action={saveCaseStudyAction.bind(null, slug)} className="space-y-6">
           <section className="glass-panel rounded-[1.8rem] p-6">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="section-kicker">meta.json</p>
                 <h2 className="mt-3 text-2xl font-semibold">Structured metadata</h2>

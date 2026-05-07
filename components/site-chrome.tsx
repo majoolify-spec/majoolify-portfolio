@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Globe2, ShieldCheck } from "lucide-react";
 import type { HomeContent, SiteSettings } from "../lib/schemas";
 import { alternateLocale, type Locale } from "../lib/locale";
+import { BUTTON_SECONDARY } from "../lib/ui-classes";
 
 type PublicHeaderProps = {
   locale: Locale;
@@ -20,7 +21,7 @@ export function LocaleSwitch({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-4 py-2 text-sm font-medium transition hover:-translate-y-0.5"
+      className={BUTTON_SECONDARY}
     >
       <Globe2 className="h-4 w-4" />
       {targetLocale.toUpperCase()}
@@ -58,7 +59,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
               <a
                 key={item.key}
                 href={`${base}#${item.key}`}
-                className="inline-flex min-h-9 min-w-10 items-center justify-center py-1"
+                className="inline-flex min-h-9 min-w-10 items-center justify-center rounded-full px-3 py-1 transition hover:bg-white/60 hover:text-[var(--foreground)]"
               >
                 {item.label}
               </a>
@@ -68,7 +69,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             <LocaleSwitch locale={locale} href={`/${alternateLocale(locale)}`} />
             <Link
               href="/admin"
-              className="hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium md:inline-flex"
+              className={`${BUTTON_SECONDARY} hidden md:inline-flex`}
             >
               Admin
             </Link>
@@ -83,7 +84,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             <a
               key={item.key}
               href={`${base}#${item.key}`}
-              className="rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-xs font-medium whitespace-nowrap text-[var(--muted)]"
+              className="rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-xs font-medium whitespace-nowrap text-[var(--muted)] transition hover:border-[rgba(15,118,110,0.3)] hover:text-[var(--accent-strong)]"
             >
               {item.label}
             </a>
@@ -120,7 +121,7 @@ export function PublicFooter({
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium"
+              className={BUTTON_SECONDARY}
             >
               {social.label}
               <ArrowUpRight className="h-4 w-4" />

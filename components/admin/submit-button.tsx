@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import { BUTTON_PRIMARY_DISABLED } from "../../lib/ui-classes";
 
 export function SubmitButton({
   label,
@@ -15,7 +16,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={pending}
-      className="on-ink inline-flex items-center justify-center rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 disabled:opacity-60"
+      className={BUTTON_PRIMARY_DISABLED}
     >
       {pending ? pendingLabel || "Saving..." : label}
     </button>

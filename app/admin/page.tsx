@@ -8,6 +8,7 @@ import { getRuntimeConfigStatus } from "../../lib/runtime-config";
 import { SubmitButton } from "../../components/admin/submit-button";
 import { StatusBanner } from "../../components/admin/status-banner";
 import { parseStatusAndDetail } from "../../lib/admin-search-params";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../lib/ui-classes";
 import {
   createCaseStudyAction,
   saveHomeAction,
@@ -43,14 +44,11 @@ function SignInScreen() {
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href={getAdminSignInUrl()}
-            className="on-ink rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold"
+            className={BUTTON_PRIMARY}
           >
             Sign in with GitHub
           </a>
-          <Link
-            href="/en"
-            className="rounded-full border border-[var(--border)] px-5 py-3 text-sm font-semibold"
-          >
+          <Link href="/en" className={BUTTON_SECONDARY}>
             Back to site
           </Link>
         </div>
@@ -144,10 +142,10 @@ export default async function AdminPage({
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/en" className="rounded-full border border-[var(--border)] px-4 py-3 text-sm font-semibold">
+            <Link href="/en" className={BUTTON_SECONDARY}>
               View site
             </Link>
-            <a href={getAdminSignOutUrl()} className="on-ink rounded-full bg-[var(--foreground)] px-4 py-3 text-sm font-semibold">
+            <a href={getAdminSignOutUrl()} className={BUTTON_PRIMARY}>
               Sign out
             </a>
           </div>
@@ -189,7 +187,7 @@ export default async function AdminPage({
 
         <section className="mt-8 grid gap-6 xl:grid-cols-2">
           <form action={saveSiteAction} className="glass-panel rounded-[1.8rem] p-6">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="section-kicker">content/site.json</p>
                 <h2 className="mt-3 text-2xl font-semibold">Shared brand, SEO, contacts, services</h2>
@@ -201,7 +199,7 @@ export default async function AdminPage({
 
           <div className="space-y-6">
             <form action={saveHomeAction.bind(null, "en")} className="glass-panel rounded-[1.8rem] p-6">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="section-kicker">content/locales/en/home.json</p>
                   <h2 className="mt-3 text-2xl font-semibold">English homepage copy</h2>
@@ -212,7 +210,7 @@ export default async function AdminPage({
             </form>
 
             <form action={saveHomeAction.bind(null, "fr")} className="glass-panel rounded-[1.8rem] p-6">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="section-kicker">content/locales/fr/home.json</p>
                   <h2 className="mt-3 text-2xl font-semibold">French homepage copy</h2>

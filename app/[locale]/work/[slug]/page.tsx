@@ -16,6 +16,7 @@ import {
   getOgLocale,
   toAbsoluteUrl,
 } from "../../../../lib/seo";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../../../lib/ui-classes";
 import { LocaleSwitch, PublicFooter } from "../../../../components/site-chrome";
 
 export async function generateStaticParams() {
@@ -117,14 +118,14 @@ export default async function CaseStudyPage({
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-4">
           <Link
             href={`/${resolvedLocale}`}
-            className="inline-flex min-h-10 items-center gap-2 rounded-full px-3 text-sm font-medium"
+            className={BUTTON_SECONDARY}
           >
             <ArrowLeft className="h-4 w-4" />
             {resolvedLocale === "en" ? "Back to portfolio" : "Retour au portfolio"}
           </Link>
           <div className="flex items-center gap-3">
             <LocaleSwitch locale={resolvedLocale} href={getCaseStudyPath(alternateLocale(resolvedLocale), slug)} />
-            <Link href="/admin" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium">
+            <Link href="/admin" className={BUTTON_SECONDARY}>
               Admin
             </Link>
           </div>
@@ -159,7 +160,7 @@ export default async function CaseStudyPage({
                   href={meta.publicLinks.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="on-ink inline-flex items-center gap-2 rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold"
+                  className={BUTTON_PRIMARY}
                 >
                   Live demo
                   <ArrowUpRight className="h-4 w-4" />
@@ -170,7 +171,7 @@ export default async function CaseStudyPage({
                   href={meta.publicLinks.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-3 text-sm font-semibold"
+                  className={BUTTON_SECONDARY}
                 >
                   Repository
                   <ArrowUpRight className="h-4 w-4" />

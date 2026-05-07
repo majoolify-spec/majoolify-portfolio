@@ -6,6 +6,7 @@ import { useDeferredValue, useState, startTransition } from "react";
 import { ArrowRight } from "lucide-react";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta } from "../lib/schemas";
+import { BUTTON_ACCENT } from "../lib/ui-classes";
 
 type WorkShowcaseProps = {
   locale: Locale;
@@ -136,7 +137,7 @@ export function WorkShowcase({ locale, caseStudies }: WorkShowcaseProps) {
                 </div>
                 <Link
                   href={`/${locale}/work/${study.slug}`}
-                  className="mt-6 inline-flex min-h-10 items-center gap-2 rounded-full px-3 text-sm font-semibold text-[var(--accent-strong)] transition group-hover:translate-x-1"
+                  className={`${BUTTON_ACCENT} mt-6 group-hover:translate-x-1`}
                 >
                   {locale === "en" ? "Open case study" : "Voir l’étude de cas"}
                   <ArrowRight className="h-4 w-4" />

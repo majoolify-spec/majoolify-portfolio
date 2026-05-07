@@ -17,6 +17,7 @@ import { WorkShowcase } from "./work-showcase";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta, HomeContent, SiteSettings } from "../lib/schemas";
 import { getCaseStudyUrl } from "../lib/seo";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../lib/ui-classes";
 
 const ContactForm = dynamic(
   () => import("./contact-form").then((module) => module.ContactForm),
@@ -173,7 +174,8 @@ export function MarketingPage({
                   key={`${word}-${index}`}
                   style={{ ["--word-index" as string]: index } as CSSProperties}
                 >
-                  {index === heroWords.length - 1 ? word : `${word}\u00A0`}
+                  {word}
+                  {index === heroWords.length - 1 ? null : " "}
                 </span>
               ))}
             </h1>
@@ -183,14 +185,14 @@ export function MarketingPage({
             <div className="mt-8 flex flex-wrap gap-3 max-[380px]:grid max-[380px]:grid-cols-1">
               <Link
                 href="#contact"
-                className="btn-magnetic on-ink inline-flex items-center gap-2 rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 max-[380px]:justify-center"
+                className={`btn-magnetic ${BUTTON_PRIMARY} max-[380px]:justify-center`}
               >
                 {home.hero.primaryCtaLabel}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#work"
-                className="btn-magnetic inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/60 px-5 py-3 text-sm font-semibold max-[380px]:justify-center"
+                className={`btn-magnetic ${BUTTON_SECONDARY} max-[380px]:justify-center`}
               >
                 {home.hero.secondaryCtaLabel}
               </Link>
