@@ -13,3 +13,11 @@ export const BUTTON_SECONDARY =
 
 export const BUTTON_ACCENT =
   `${BUTTON_BASE} border border-[rgba(15,118,110,0.24)] bg-white/72 text-[var(--accent-strong)] hover:border-[rgba(15,118,110,0.34)]`;
+
+export const PANEL_STANDARD = "glass-panel rounded-[1.8rem] p-6";
+
+export const PANEL_SPACIOUS = "glass-panel rounded-[2rem] p-6 md:p-8";
+
+export const PANEL_SOFT = "rounded-[1.4rem] border border-black/8 bg-white/70 p-4";
+
+export const PANEL_SOFT_LG = "rounded-[1.5rem] border border-black/8 bg-white/70 p-5";

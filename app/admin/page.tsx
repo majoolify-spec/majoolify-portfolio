@@ -8,7 +8,13 @@ import { getRuntimeConfigStatus } from "../../lib/runtime-config";
 import { SubmitButton } from "../../components/admin/submit-button";
 import { StatusBanner } from "../../components/admin/status-banner";
 import { parseStatusAndDetail } from "../../lib/admin-search-params";
-import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../lib/ui-classes";
+import {
+  BUTTON_PRIMARY,
+  BUTTON_SECONDARY,
+  PANEL_SOFT,
+  PANEL_SOFT_LG,
+  PANEL_STANDARD,
+} from "../../lib/ui-classes";
 import {
   createCaseStudyAction,
   saveHomeAction,
@@ -78,7 +84,7 @@ function RuntimeSetupPanel() {
   ];
 
   return (
-    <section className="mt-8 glass-panel rounded-[1.8rem] p-6">
+    <section className={`${PANEL_STANDARD} mt-8`}>
       <p className="section-kicker">Runtime setup</p>
       <h2 className="mt-3 text-2xl font-semibold">Environment diagnostics</h2>
       <p className="mt-3 text-sm text-[var(--muted)]">
@@ -154,24 +160,24 @@ export default async function AdminPage({
         <StatusBanner status={status} detail={detail} />
 
         <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="glass-panel rounded-[1.8rem] p-6">
+          <div className={PANEL_STANDARD}>
             <p className="section-kicker">Session</p>
             <p className="mt-3 text-xl font-semibold">{access.label}</p>
             <p className="mt-2 text-sm text-[var(--muted)]">
               Publish backend: {getPublishStatusLabel()}
             </p>
           </div>
-          <div className="glass-panel rounded-[1.8rem] p-6">
+          <div className={PANEL_STANDARD}>
             <p className="section-kicker">Quick actions</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <form action={createCaseStudyAction} className="rounded-[1.4rem] border border-black/8 bg-white/70 p-4">
+              <form action={createCaseStudyAction} className={PANEL_SOFT}>
                 <label className="block text-sm font-semibold">New case study slug</label>
                 <input name="slug" placeholder="majoolify-new-build" className="admin-input mt-3" />
                 <div className="mt-4">
                   <SubmitButton label="Create draft" pendingLabel="Creating..." />
                 </div>
               </form>
-              <form action={uploadMediaAction} className="rounded-[1.4rem] border border-black/8 bg-white/70 p-4">
+              <form action={uploadMediaAction} className={PANEL_SOFT}>
                 <label className="block text-sm font-semibold">Upload media asset</label>
                 <input type="file" name="file" className="mt-3 block w-full text-sm" />
                 <input name="folder" placeholder="optional/subfolder" className="admin-input mt-3" />
@@ -186,7 +192,7 @@ export default async function AdminPage({
         <RuntimeSetupPanel />
 
         <section className="mt-8 grid gap-6 xl:grid-cols-2">
-          <form action={saveSiteAction} className="glass-panel rounded-[1.8rem] p-6">
+          <form action={saveSiteAction} className={PANEL_STANDARD}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="section-kicker">content/site.json</p>
@@ -198,7 +204,7 @@ export default async function AdminPage({
           </form>
 
           <div className="space-y-6">
-            <form action={saveHomeAction.bind(null, "en")} className="glass-panel rounded-[1.8rem] p-6">
+            <form action={saveHomeAction.bind(null, "en")} className={PANEL_STANDARD}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="section-kicker">content/locales/en/home.json</p>
@@ -209,7 +215,7 @@ export default async function AdminPage({
               <textarea name="payload" defaultValue={homeEnJson} className="admin-textarea mt-5 w-full" />
             </form>
 
-            <form action={saveHomeAction.bind(null, "fr")} className="glass-panel rounded-[1.8rem] p-6">
+            <form action={saveHomeAction.bind(null, "fr")} className={PANEL_STANDARD}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="section-kicker">content/locales/fr/home.json</p>
@@ -222,7 +228,7 @@ export default async function AdminPage({
           </div>
         </section>
 
-        <section className="mt-8 glass-panel rounded-[1.8rem] p-6">
+        <section className={`${PANEL_STANDARD} mt-8`}>
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="section-kicker">Case studies</p>
@@ -231,7 +237,7 @@ export default async function AdminPage({
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((study) => (
-              <article key={study.slug} className="rounded-[1.5rem] border border-black/8 bg-white/70 p-5">
+              <article key={study.slug} className={PANEL_SOFT_LG}>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                   {study.slug}
                 </p>

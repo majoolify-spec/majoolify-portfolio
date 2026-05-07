@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { BUTTON_PRIMARY_DISABLED } from "../lib/ui-classes";
+import { BUTTON_PRIMARY_DISABLED, PANEL_SPACIOUS } from "../lib/ui-classes";
 
 type ContactFormProps = {
   locale: "en" | "fr";
@@ -80,7 +80,7 @@ export function ContactForm({
     <form
       ref={formRef}
       action={handleSubmit}
-      className="glass-panel rounded-[2rem] p-6 md:p-8"
+      className={PANEL_SPACIOUS}
       aria-busy={status === "loading"}
     >
       <input

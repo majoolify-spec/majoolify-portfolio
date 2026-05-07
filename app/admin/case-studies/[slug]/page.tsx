@@ -7,7 +7,11 @@ import { readCaseStudyEditorFile } from "../../../../lib/editor-content";
 import { parseStatusAndDetail } from "../../../../lib/admin-search-params";
 import { SubmitButton } from "../../../../components/admin/submit-button";
 import { StatusBanner } from "../../../../components/admin/status-banner";
-import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../../../lib/ui-classes";
+import {
+  BUTTON_PRIMARY,
+  BUTTON_SECONDARY,
+  PANEL_STANDARD,
+} from "../../../../lib/ui-classes";
 import { saveCaseStudyAction } from "../../actions";
 
 export const metadata: Metadata = {
@@ -81,7 +85,7 @@ export default async function CaseStudyAdminPage({
         <StatusBanner status={status} detail={detail} />
 
         <form action={saveCaseStudyAction.bind(null, slug)} className="space-y-6">
-          <section className="glass-panel rounded-[1.8rem] p-6">
+          <section className={PANEL_STANDARD}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="section-kicker">meta.json</p>
@@ -93,12 +97,12 @@ export default async function CaseStudyAdminPage({
           </section>
 
           <section className="grid gap-6 xl:grid-cols-2">
-            <div className="glass-panel rounded-[1.8rem] p-6">
+            <div className={PANEL_STANDARD}>
               <p className="section-kicker">en.mdx</p>
               <h2 className="mt-3 text-2xl font-semibold">English narrative</h2>
               <textarea name="bodyEn" defaultValue={bodyEn} className="admin-textarea mt-5 w-full" />
             </div>
-            <div className="glass-panel rounded-[1.8rem] p-6">
+            <div className={PANEL_STANDARD}>
               <p className="section-kicker">fr.mdx</p>
               <h2 className="mt-3 text-2xl font-semibold">French narrative</h2>
               <textarea name="bodyFr" defaultValue={bodyFr} className="admin-textarea mt-5 w-full" />

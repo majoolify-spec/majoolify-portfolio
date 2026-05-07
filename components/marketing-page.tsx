@@ -17,14 +17,14 @@ import { WorkShowcase } from "./work-showcase";
 import { localizeCopy, type Locale } from "../lib/locale";
 import type { CaseStudyMeta, HomeContent, SiteSettings } from "../lib/schemas";
 import { getCaseStudyUrl } from "../lib/seo";
-import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../lib/ui-classes";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY, PANEL_SPACIOUS } from "../lib/ui-classes";
 
 const ContactForm = dynamic(
   () => import("./contact-form").then((module) => module.ContactForm),
   {
     loading: () => (
       <div
-        className="glass-panel h-[520px] rounded-[2rem] p-6 md:p-8"
+        className={`${PANEL_SPACIOUS} h-[520px]`}
         aria-hidden
       />
     ),
@@ -308,7 +308,7 @@ export function MarketingPage({
         </section>
 
         <section className="py-6">
-          <div className="glass-panel rounded-[2rem] p-6 md:p-8">
+          <div className={PANEL_SPACIOUS}>
             <p className="section-kicker">{home.credibility.eyebrow}</p>
             <div className="mt-5 grid gap-4 md:grid-cols-[0.95fr_1.05fr]">
               <h2 className="section-title text-[2.3rem] md:text-[3rem]">{home.credibility.title}</h2>
