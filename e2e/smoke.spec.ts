@@ -35,5 +35,5 @@ test("@smoke supports a mocked admin publish flow", async ({ page }) => {
 
   await expect(page.getByRole("heading", { name: /Majoolify backoffice/i })).toBeVisible();
   await page.getByRole("button", { name: /Publish site config/i }).click();
-  await expect(page.getByText(/site-saved/i)).toBeVisible();
+  await expect(page.getByText(/site saved/i)).toBeVisible();
 });
