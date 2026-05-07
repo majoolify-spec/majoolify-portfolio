@@ -84,7 +84,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             <a
               key={item.key}
               href={`${base}#${item.key}`}
-              className="rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-xs font-medium whitespace-nowrap text-[var(--muted)] transition hover:border-[rgba(15,118,110,0.3)] hover:text-[var(--accent-strong)]"
+              className="inline-flex min-h-11 items-center rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-sm font-medium whitespace-nowrap text-[var(--muted)] transition hover:border-[rgba(15,118,110,0.3)] hover:text-[var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
             >
               {item.label}
             </a>

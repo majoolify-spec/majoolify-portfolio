@@ -239,7 +239,7 @@ export default async function CaseStudyPage({
           </section>
         ) : null}
 
-        <section className="case-prose mt-12 max-w-4xl">{content}</section>
+        <section className="case-prose case-prose-shell mt-12">{content}</section>
 
         {meta.gallery.length > 0 ? (
           <section className="mt-14">

@@ -217,6 +217,10 @@ select {
   color: rgba(15, 23, 36, 0.88);
 }
 
+.case-prose-shell {
+  max-width: min(70ch, 100%);
+}
+
 .case-prose h2,
 .case-prose h3 {
   font-family: var(--font-cormorant), serif;
@@ -238,7 +242,7 @@ select {
 .case-prose ul,
 .case-prose ol,
 .case-prose blockquote {
-  margin: 1rem 0;
+  margin: 1.1rem 0;
 }
 
 .case-prose ul,
@@ -667,6 +671,23 @@ select {
 
   .section-title {
     line-height: 0.96;
+  }
+
+  .case-prose {
+    font-size: 1rem;
+    line-height: 1.74;
+  }
+
+  .case-prose h2 {
+    margin-top: 2.2rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.02;
+  }
+
+  .case-prose h3 {
+    margin-top: 1.65rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.08;
   }
 
   .signature-headline {

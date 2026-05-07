@@ -1,5 +1,5 @@
 const BUTTON_BASE =
-  "inline-flex min-h-10 min-w-10 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold leading-tight transition hover:-translate-y-0.5";
+  "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold leading-tight transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]";
 
 const BUTTON_DISABLED = "disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none";
 
