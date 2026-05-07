@@ -116,6 +116,18 @@ body::before {
   color: #fff !important;
 }
 
+.on-ink-muted {
+  color: rgba(248, 239, 226, 0.84);
+}
+
+.on-ink-soft {
+  color: rgba(248, 239, 226, 0.74);
+}
+
+.on-ink-subtle {
+  color: rgba(248, 239, 226, 0.66);
+}
+
 :where(a, button, input, textarea, select):focus-visible {
   outline: 2px solid rgba(15, 118, 110, 0.52);
   outline-offset: 2px;

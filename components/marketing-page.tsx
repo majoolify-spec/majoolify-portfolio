@@ -217,16 +217,16 @@ export function MarketingPage({
             <div className="fade-up lg:pb-5">
             <div className="ink-panel relative overflow-hidden rounded-[2rem] p-6 md:p-8">
               <div className="absolute inset-x-0 top-0 h-px bg-white/12" />
-              <p className="section-kicker text-white/55">
+              <p className="section-kicker on-ink-soft">
                 {locale === "en" ? "Studio signal" : "Signal du studio"}
               </p>
               <div className="mt-5 space-y-4">
                 <div className="rounded-[1.4rem] border border-white/10 bg-white/4 p-4">
-                  <p className="text-sm text-white/60">
+                  <p className="on-ink-subtle text-sm">
                     {locale === "en" ? "Legal entity" : "Entité légale"}
                   </p>
                   <p className="mt-2 text-xl font-semibold">{site.brand.legalName}</p>
-                  <p className="mt-2 text-sm text-white/70">
+                  <p className="on-ink-soft mt-2 text-sm">
                     {locale === "en"
                       ? `${site.brand.founder}, founder and lead engineer, based in ${site.brand.location}.`
                       : `${site.brand.founder}, fondateur et ingénieur principal, basé à ${site.brand.location}.`}
@@ -238,7 +238,7 @@ export function MarketingPage({
                     <p className="mt-3 font-semibold">
                       {locale === "en" ? "AI prompt systems" : "Systèmes de prompts IA"}
                     </p>
-                    <p className="mt-2 text-sm text-white/70">
+                    <p className="on-ink-soft mt-2 text-sm">
                       {locale === "en"
                         ? "Prompt architecture that ships with UI, workflow, and product constraints in mind."
                         : "Une architecture de prompts pensée avec l’UI, les workflows et les contraintes produit."}
@@ -249,7 +249,7 @@ export function MarketingPage({
                     <p className="mt-3 font-semibold">
                       {locale === "en" ? "Next.js execution" : "Exécution Next.js"}
                     </p>
-                    <p className="mt-2 text-sm text-white/70">
+                    <p className="on-ink-soft mt-2 text-sm">
                       {locale === "en"
                         ? "Structured frontend systems for product launches, internal tools, and AI features."
                         : "Des systèmes frontend structurés pour lancer des produits, outils internes et fonctions IA."}
@@ -399,17 +399,17 @@ export function MarketingPage({
                     <div className="rounded-2xl border border-white/12 bg-white/10 p-2.5">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <span className="rounded-full border border-white/20 bg-black/20 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/80">
+                    <span className="on-ink-muted rounded-full border border-white/20 bg-black/20 px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em]">
                       {locale === "en" ? "Lab" : "Lab"}
                     </span>
                   </div>
                   <h3 className="mt-5 text-2xl font-semibold text-white">{experiment.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/75">{experiment.description}</p>
+                  <p className="on-ink-muted mt-3 text-sm leading-7">{experiment.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {experiment.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90"
+                        className="on-ink-muted rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium"
                       >
                         {tag}
                       </span>
@@ -454,11 +454,11 @@ export function MarketingPage({
         <section className="py-14">
           <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
             <article className="ink-panel rounded-[2rem] p-7 md:p-8">
-              <p className="section-kicker text-white/55">{home.expertise.eyebrow}</p>
+              <p className="section-kicker on-ink-soft">{home.expertise.eyebrow}</p>
               <h2 className="section-title mt-4 text-[2.6rem] md:text-[3.5rem] text-white">
                 {home.expertise.title}
               </h2>
-              <p className="mt-4 text-pretty text-sm leading-7 text-white/72">{home.expertise.intro}</p>
+              <p className="on-ink-muted mt-4 text-pretty text-sm leading-7">{home.expertise.intro}</p>
               <div className="mt-6 space-y-3">
                 {home.expertise.points.map((point) => (
                   <div
@@ -466,7 +466,7 @@ export function MarketingPage({
                     className="flex items-start gap-3 rounded-[1.2rem] border border-white/10 bg-white/4 p-4"
                   >
                     <Sparkles className="mt-1 h-4 w-4 text-[#ffd29a]" />
-                    <p className="text-sm leading-7 text-white/78">{point}</p>
+                    <p className="on-ink-muted text-sm leading-7">{point}</p>
                   </div>
                 ))}
               </div>
