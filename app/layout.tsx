@@ -1,19 +1,45 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import { getSiteSettings } from "../lib/content";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = localFont({
   variable: "--font-space-grotesk",
-  subsets: ["latin"],
   display: "optional",
+  src: [
+    {
+      path: "../public/fonts/space-grotesk-400.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/space-grotesk-500.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/space-grotesk-700.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
-const cormorant = Cormorant_Garamond({
+const cormorant = localFont({
   variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["500", "700"],
   display: "optional",
+  src: [
+    {
+      path: "../public/fonts/cormorant-garamond-500.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/cormorant-garamond-700.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
