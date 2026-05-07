@@ -11,8 +11,6 @@ import { parseStatusAndDetail } from "../../lib/admin-search-params";
 import {
   BUTTON_PRIMARY,
   BUTTON_SECONDARY,
-  PANEL_SOFT,
-  PANEL_SOFT_LG,
   PANEL_STANDARD,
 } from "../../lib/ui-classes";
 import {
@@ -35,6 +33,9 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const QUICK_ACTION_PANEL = "rounded-[1.4rem] border border-black/8 bg-white/70 p-4";
+const CASE_STUDY_CARD_PANEL = "rounded-[1.5rem] border border-black/8 bg-white/70 p-5";
 
 function SignInScreen() {
   return (
@@ -170,14 +171,14 @@ export default async function AdminPage({
           <div className={PANEL_STANDARD}>
             <p className="section-kicker">Quick actions</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <form action={createCaseStudyAction} className={PANEL_SOFT}>
+              <form action={createCaseStudyAction} className={QUICK_ACTION_PANEL}>
                 <label className="block text-sm font-semibold">New case study slug</label>
                 <input name="slug" placeholder="majoolify-new-build" className="admin-input mt-3" />
                 <div className="mt-4">
                   <SubmitButton label="Create draft" pendingLabel="Creating..." />
                 </div>
               </form>
-              <form action={uploadMediaAction} className={PANEL_SOFT}>
+              <form action={uploadMediaAction} className={QUICK_ACTION_PANEL}>
                 <label className="block text-sm font-semibold">Upload media asset</label>
                 <input type="file" name="file" className="mt-3 block w-full text-sm" />
                 <input name="folder" placeholder="optional/subfolder" className="admin-input mt-3" />
@@ -237,7 +238,7 @@ export default async function AdminPage({
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((study) => (
-              <article key={study.slug} className={PANEL_SOFT_LG}>
+              <article key={study.slug} className={CASE_STUDY_CARD_PANEL}>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                   {study.slug}
                 </p>
