@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BUTTON_PRIMARY } from "../lib/ui-classes";
 
 export default function NotFound() {
   return (
@@ -11,7 +12,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/en"
-          className="on-ink mt-8 inline-flex rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+          className={`${BUTTON_PRIMARY} mt-8`}
         >
           Back to Majoolify
         </Link>
