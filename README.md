@@ -34,7 +34,8 @@ Agency-first portfolio for **Majoolify** (Ahmed Majoul), built with Next.js App 
 
 1. Install dependencies:
 ```bash
-npm install
+nvm use
+npm ci
 ```
 2. Create local environment file:
 ```bash
@@ -83,6 +84,8 @@ npm run e2e:smoke
 ```
 
 `npm run verify` runs lint, typecheck, unit tests, and production build.
+
+The repository expects Node `22.13.0` from [.nvmrc](</C:/Users/majou/Desktop/Figma projects/majoolify-portfolio/.nvmrc>) to avoid install-time engine warnings from the current lint toolchain.
 
 ## Deployment
 

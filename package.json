@@ -2,6 +2,7 @@
   "name": "majoolify-portfolio",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@10.9.0",
   "overrides": {
     "postcss": "^8.5.14"
   },
