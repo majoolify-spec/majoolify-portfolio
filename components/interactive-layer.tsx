@@ -8,8 +8,9 @@ export function InteractiveLayer() {
       return;
     }
 
-    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
-    if (!media.matches) {
+    const pointerMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!pointerMedia.matches || reducedMotionMedia.matches) {
       return;
     }
 

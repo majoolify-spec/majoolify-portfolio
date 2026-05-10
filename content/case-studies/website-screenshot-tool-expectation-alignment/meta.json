@@ -4,7 +4,7 @@
   "privacy": "redacted",
   "featured": false,
   "year": 2026,
-  "clientLabel": "Website Screenshot Tool - expectation-alignment",
+  "clientLabel": "Screenshot Review Alignment",
   "role": "Workflow refinement and collaboration UX",
   "services": [
     "Frontend systems",
@@ -25,8 +25,8 @@
   ],
   "gallery": [],
   "title": {
-    "en": "Website Screenshot Tool - expectation-alignment",
-    "fr": "Website Screenshot Tool - expectation-alignment"
+    "en": "Screenshot Review Alignment",
+    "fr": "Alignement des revues de captures"
   },
   "summary": {
     "en": "A refinement track focused on reducing ambiguity in screenshot reviews through clearer acceptance framing and output standards.",

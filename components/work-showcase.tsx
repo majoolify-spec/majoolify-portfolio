@@ -95,7 +95,7 @@ export function WorkShowcase({ locale, caseStudies }: WorkShowcaseProps) {
                   priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f1724]/60 via-transparent to-transparent" />
-                <div className="work-card-pulse absolute -right-8 -top-8 h-28 w-28 rounded-full bg-teal-300/20 blur-2xl" />
+                <div className="work-card-pulse absolute right-3 top-3 h-20 w-20 rounded-full bg-teal-300/20 blur-2xl lg:-right-8 lg:-top-8 lg:h-28 lg:w-28" />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-white">
                   <span className="rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]">
                     {study.status}

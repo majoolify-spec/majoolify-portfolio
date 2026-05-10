@@ -61,7 +61,7 @@ export default async function CaseStudyAdminPage({
   ]);
 
   return (
-    <main className="min-h-screen px-4 py-8 md:px-6 md:py-10">
+    <main className="min-h-screen py-8 md:py-10">
       <div className="shell">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -93,19 +93,37 @@ export default async function CaseStudyAdminPage({
               </div>
               <SubmitButton label="Publish case study" pendingLabel="Publishing..." />
             </div>
-            <textarea name="meta" defaultValue={metaJson} className="admin-textarea mt-5 w-full" />
+            <textarea
+              name="meta"
+              cols={1}
+              aria-label={`Metadata JSON for ${meta.title.en}`}
+              defaultValue={metaJson}
+              className="admin-textarea mt-5 w-full"
+            />
           </section>
 
-          <section className="grid gap-6 xl:grid-cols-2">
+          <section className="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <div className={PANEL_STANDARD}>
               <p className="section-kicker">en.mdx</p>
               <h2 className="mt-3 text-2xl font-semibold">English narrative</h2>
-              <textarea name="bodyEn" defaultValue={bodyEn} className="admin-textarea mt-5 w-full" />
+              <textarea
+                name="bodyEn"
+                cols={1}
+                aria-label={`English narrative for ${meta.title.en}`}
+                defaultValue={bodyEn}
+                className="admin-textarea mt-5 w-full"
+              />
             </div>
             <div className={PANEL_STANDARD}>
               <p className="section-kicker">fr.mdx</p>
               <h2 className="mt-3 text-2xl font-semibold">French narrative</h2>
-              <textarea name="bodyFr" defaultValue={bodyFr} className="admin-textarea mt-5 w-full" />
+              <textarea
+                name="bodyFr"
+                cols={1}
+                aria-label={`French narrative for ${meta.title.en}`}
+                defaultValue={bodyFr}
+                className="admin-textarea mt-5 w-full"
+              />
             </div>
           </section>
         </form>

@@ -14,6 +14,6 @@ export const BUTTON_SECONDARY =
 export const BUTTON_ACCENT =
   `${BUTTON_BASE} border border-[rgba(15,118,110,0.24)] bg-white/72 text-[var(--accent-strong)] hover:border-[rgba(15,118,110,0.34)]`;
 
-export const PANEL_STANDARD = "glass-panel rounded-[1.8rem] p-6";
+export const PANEL_STANDARD = "glass-panel min-w-0 rounded-[1.8rem] p-6";
 
-export const PANEL_SPACIOUS = "glass-panel rounded-[2rem] p-6 md:p-8";
+export const PANEL_SPACIOUS = "glass-panel min-w-0 rounded-[2rem] p-6 md:p-8";

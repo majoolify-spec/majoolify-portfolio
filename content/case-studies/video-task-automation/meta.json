@@ -4,7 +4,7 @@
   "privacy": "public",
   "featured": true,
   "year": 2026,
-  "clientLabel": "Video Task Automation5",
+  "clientLabel": "Video Task Automation",
   "role": "Workflow architecture and frontend orchestration",
   "services": [
     "AI prompt workflow design",
@@ -17,16 +17,16 @@
   ],
   "previewMedia": [
     {
-      "src": "/uploads/portfolio/video-task-automation.svg",
+      "src": "/uploads/portfolio/video-task-automation.png",
       "alt": "Video task automation preview",
-      "width": 1600,
-      "height": 1100
+      "width": 1440,
+      "height": 1447
     }
   ],
   "gallery": [],
   "title": {
-    "en": "Video Task Automation5",
-    "fr": "Video Task Automation5"
+    "en": "Video Task Automation",
+    "fr": "Automatisation des tâches vidéo"
   },
   "summary": {
     "en": "An automation-oriented product concept for managing repeatable video workflows from task intake to output delivery.",

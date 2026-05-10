@@ -88,8 +88,8 @@ export function ContactForm({
         name="website"
         tabIndex={-1}
         autoComplete="off"
-        className="sr-only"
-        aria-hidden
+        className="hidden"
+        aria-hidden="true"
       />
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block">

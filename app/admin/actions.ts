@@ -125,7 +125,19 @@ export async function createCaseStudyAction(formData: FormData) {
     redirectWithStatus("/admin", "create-error", "Provide a valid slug.");
   }
 
-  if (await caseStudyExists(slug)) {
+  let existingCaseStudy = false;
+
+  try {
+    existingCaseStudy = await caseStudyExists(slug);
+  } catch (error) {
+    redirectWithStatus(
+      "/admin",
+      "create-error",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+  }
+
+  if (existingCaseStudy) {
     redirectWithStatus(
       "/admin",
       "create-error",
@@ -133,25 +145,34 @@ export async function createCaseStudyAction(formData: FormData) {
     );
   }
 
-  const result = await publishFiles(
-    [
-      {
-        path: `content/case-studies/${slug}/meta.json`,
-        content: `${JSON.stringify(getDefaultCaseStudyMeta(slug), null, 2)}\n`,
-      },
-      {
-        path: `content/case-studies/${slug}/en.mdx`,
-        content: `## Overview\n\nWrite the English case study narrative here.\n`,
-      },
-      {
-        path: `content/case-studies/${slug}/fr.mdx`,
-        content: `## Aperçu\n\nRédigez ici la narration française de l’étude de cas.\n`,
-      },
-    ],
-    `feat: create case study ${slug}`,
-  );
+  let result: Awaited<ReturnType<typeof publishFiles>>;
 
-  applyRevalidation(getCaseStudyRevalidationTargets(slug));
+  try {
+    result = await publishFiles(
+      [
+        {
+          path: `content/case-studies/${slug}/meta.json`,
+          content: `${JSON.stringify(getDefaultCaseStudyMeta(slug), null, 2)}\n`,
+        },
+        {
+          path: `content/case-studies/${slug}/en.mdx`,
+          content: `## Overview\n\nWrite the English case study narrative here.\n`,
+        },
+        {
+          path: `content/case-studies/${slug}/fr.mdx`,
+          content: `## Aperçu\n\nRédigez ici la narration française de l’étude de cas.\n`,
+        },
+      ],
+      `feat: create case study ${slug}`,
+    );
+    applyRevalidation(getCaseStudyRevalidationTargets(slug));
+  } catch (error) {
+    redirectWithStatus(
+      "/admin",
+      "create-error",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+  }
 
   if (result.mode === "dry-run") {
     redirectWithStatus("/admin", "create-dry-run", slug);
@@ -222,9 +243,19 @@ export async function uploadMediaAction(formData: FormData) {
     ? `public/uploads/portfolio/${folder}/${safeName}`
     : `public/uploads/portfolio/${safeName}`;
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const result = await publishFiles([{ path, content: buffer }], `feat: upload asset ${safeName}`);
-  applyRevalidation(getSiteRevalidationTargets());
+  let result: Awaited<ReturnType<typeof publishFiles>>;
+
+  try {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    result = await publishFiles([{ path, content: buffer }], `feat: upload asset ${safeName}`);
+    applyRevalidation(getSiteRevalidationTargets());
+  } catch (error) {
+    redirectWithStatus(
+      "/admin",
+      "upload-error",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+  }
 
   redirectWithStatus("/admin", result.mode === "dry-run" ? "upload-dry-run" : "asset-uploaded", path);
 }

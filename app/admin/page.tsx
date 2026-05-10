@@ -36,6 +36,8 @@ export const metadata: Metadata = {
 
 const QUICK_ACTION_PANEL = "rounded-[1.4rem] border border-black/8 bg-white/70 p-4";
 const CASE_STUDY_CARD_PANEL = "rounded-[1.5rem] border border-black/8 bg-white/70 p-5";
+const ADMIN_CARD_LINK =
+  "inline-flex min-h-11 items-center rounded-full border border-black/10 bg-white/70 px-3 text-sm font-semibold text-[var(--foreground)] transition hover:border-[rgba(15,118,110,0.34)] hover:text-[var(--accent-strong)]";
 
 function SignInScreen() {
   return (
@@ -137,7 +139,7 @@ export default async function AdminPage({
   ]);
 
   return (
-    <main className="min-h-screen px-4 py-8 md:px-6 md:py-10">
+    <main className="min-h-screen py-8 md:py-10">
       <div className="shell">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -172,16 +174,38 @@ export default async function AdminPage({
             <p className="section-kicker">Quick actions</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <form action={createCaseStudyAction} className={QUICK_ACTION_PANEL}>
-                <label className="block text-sm font-semibold">New case study slug</label>
-                <input name="slug" placeholder="majoolify-new-build" className="admin-input mt-3" />
+                <label htmlFor="new-case-study-slug" className="block text-sm font-semibold">
+                  New case study slug
+                </label>
+                <input
+                  id="new-case-study-slug"
+                  name="slug"
+                  placeholder="majoolify-new-build"
+                  className="admin-input mt-3"
+                />
                 <div className="mt-4">
                   <SubmitButton label="Create draft" pendingLabel="Creating..." />
                 </div>
               </form>
               <form action={uploadMediaAction} className={QUICK_ACTION_PANEL}>
-                <label className="block text-sm font-semibold">Upload media asset</label>
-                <input type="file" name="file" className="mt-3 block w-full text-sm" />
-                <input name="folder" placeholder="optional/subfolder" className="admin-input mt-3" />
+                <label htmlFor="media-file" className="block text-sm font-semibold">
+                  Upload media asset
+                </label>
+                <input
+                  id="media-file"
+                  type="file"
+                  name="file"
+                  className="mt-3 block min-h-11 w-full rounded-[1rem] border border-[var(--border)] bg-white/70 px-3 py-2 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-[var(--foreground)] file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-white"
+                />
+                <label htmlFor="media-folder" className="mt-4 block text-sm font-semibold">
+                  Optional upload folder
+                </label>
+                <input
+                  id="media-folder"
+                  name="folder"
+                  placeholder="optional/subfolder"
+                  className="admin-input mt-3"
+                />
                 <div className="mt-4">
                   <SubmitButton label="Upload" pendingLabel="Uploading..." />
                 </div>
@@ -192,7 +216,7 @@ export default async function AdminPage({
 
         <RuntimeSetupPanel />
 
-        <section className="mt-8 grid gap-6 xl:grid-cols-2">
+        <section className="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
           <form action={saveSiteAction} className={PANEL_STANDARD}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
@@ -201,7 +225,13 @@ export default async function AdminPage({
               </div>
               <SubmitButton label="Publish site config" pendingLabel="Publishing..." />
             </div>
-            <textarea name="payload" defaultValue={siteJson} className="admin-textarea mt-5 w-full" />
+            <textarea
+              name="payload"
+              cols={1}
+              aria-label="Shared site JSON payload"
+              defaultValue={siteJson}
+              className="admin-textarea mt-5 w-full"
+            />
           </form>
 
           <div className="space-y-6">
@@ -213,7 +243,13 @@ export default async function AdminPage({
                 </div>
                 <SubmitButton label="Publish EN" pendingLabel="Publishing..." />
               </div>
-              <textarea name="payload" defaultValue={homeEnJson} className="admin-textarea mt-5 w-full" />
+              <textarea
+                name="payload"
+                cols={1}
+                aria-label="English homepage JSON payload"
+                defaultValue={homeEnJson}
+                className="admin-textarea mt-5 w-full"
+              />
             </form>
 
             <form action={saveHomeAction.bind(null, "fr")} className={PANEL_STANDARD}>
@@ -224,7 +260,13 @@ export default async function AdminPage({
                 </div>
                 <SubmitButton label="Publish FR" pendingLabel="Publishing..." />
               </div>
-              <textarea name="payload" defaultValue={homeFrJson} className="admin-textarea mt-5 w-full" />
+              <textarea
+                name="payload"
+                cols={1}
+                aria-label="French homepage JSON payload"
+                defaultValue={homeFrJson}
+                className="admin-textarea mt-5 w-full"
+              />
             </form>
           </div>
         </section>
@@ -252,14 +294,14 @@ export default async function AdminPage({
                     {study.privacy}
                   </span>
                 </div>
-                <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href={`/admin/case-studies/${study.slug}`} className="text-[var(--accent-strong)]">
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <a href={`/admin/case-studies/${study.slug}`} className={ADMIN_CARD_LINK}>
                     Edit
                   </a>
-                  <a href={`/en/work/${study.slug}`} className="text-[var(--muted)]">
+                  <a href={`/en/work/${study.slug}`} className={ADMIN_CARD_LINK}>
                     EN preview
                   </a>
-                  <a href={`/fr/work/${study.slug}`} className="text-[var(--muted)]">
+                  <a href={`/fr/work/${study.slug}`} className={ADMIN_CARD_LINK}>
                     FR preview
                   </a>
                 </div>

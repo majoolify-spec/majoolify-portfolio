@@ -4,7 +4,7 @@
   "privacy": "public",
   "featured": false,
   "year": 2026,
-  "clientLabel": "wish Invitation Webpage (Copy)",
+  "clientLabel": "Wish Invitation Webpage",
   "role": "Creative frontend build and interaction polish",
   "services": [
     "Frontend systems",
@@ -17,16 +17,16 @@
   ],
   "previewMedia": [
     {
-      "src": "/uploads/portfolio/wish-invitation-webpage.svg",
+      "src": "/uploads/portfolio/wish-invitation-webpage.png",
       "alt": "Wish invitation webpage preview",
-      "width": 1600,
-      "height": 1100
+      "width": 1440,
+      "height": 2200
     }
   ],
   "gallery": [],
   "title": {
-    "en": "wish Invitation Webpage (Copy)",
-    "fr": "wish Invitation Webpage (Copy)"
+    "en": "Wish Invitation Webpage",
+    "fr": "Page d’invitation Wish"
   },
   "summary": {
     "en": "A lightweight invitation-page concept blending editorial layout, expressive typography, and mobile-first interaction cues.",

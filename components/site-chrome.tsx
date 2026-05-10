@@ -43,7 +43,10 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
     <header className="sticky top-0 z-30 border-b border-black/5 bg-[rgba(247,240,228,0.8)] backdrop-blur-xl">
       <div className="shell py-4">
         <div className="flex items-center justify-between gap-4">
-          <Link href={base} className="flex items-center gap-3">
+          <Link
+            href={base}
+            className="flex min-h-11 items-center gap-3 rounded-full pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+          >
             <span className="on-ink inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--foreground)] text-sm font-semibold">
               M
             </span>
@@ -59,7 +62,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
               <a
                 key={item.key}
                 href={`${base}#${item.key}`}
-                className="inline-flex min-h-9 min-w-10 items-center justify-center rounded-full px-3 py-1 transition hover:bg-white/60 hover:text-[var(--foreground)]"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 py-1 transition hover:bg-white/60 hover:text-[var(--foreground)]"
               >
                 {item.label}
               </a>
@@ -67,18 +70,20 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
           </nav>
           <div className="flex items-center gap-3">
             <LocaleSwitch locale={locale} href={`/${alternateLocale(locale)}`} />
-            <Link
-              href="/admin"
-              className={`${BUTTON_SECONDARY} hidden md:inline-flex`}
-            >
-              Admin
-            </Link>
+            <div className="hidden md:block">
+              <Link
+                href="/admin"
+                className={BUTTON_SECONDARY}
+              >
+                Admin
+              </Link>
+            </div>
           </div>
         </div>
 
         <nav
           aria-label="Sections"
-          className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden"
+          className="mt-3 flex flex-wrap gap-2 lg:hidden"
         >
           {navItems.map((item) => (
             <a

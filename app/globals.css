@@ -98,6 +98,9 @@ body::before {
   left: 1rem;
   top: -100px;
   z-index: 60;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.96);
@@ -164,6 +167,10 @@ select {
   gap: 1.5rem;
 }
 
+.hero-grid > * {
+  min-width: 0;
+}
+
 @media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
@@ -196,7 +203,7 @@ select {
   font-family: var(--font-cormorant), serif;
   font-size: clamp(2.5rem, 5vw, 4.8rem);
   line-height: 0.92;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .eyebrow-badge {
@@ -224,7 +231,7 @@ select {
 .case-prose h2,
 .case-prose h3 {
   font-family: var(--font-cormorant), serif;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--foreground);
 }
 
@@ -257,6 +264,11 @@ select {
 }
 
 .admin-textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-inline-size: 0;
+  max-width: 100%;
   min-height: 22rem;
   resize: vertical;
   border-radius: var(--radius-lg);
@@ -309,9 +321,12 @@ select {
   flex-wrap: wrap;
   column-gap: 0.28ch;
   row-gap: 0.04em;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .signature-headline span {
+  max-width: 100%;
   opacity: 1;
   transform: translateY(0.2em);
   animation: word-rise 0.7s ease forwards;
@@ -331,10 +346,10 @@ select {
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.08em;
+  line-height: 1.5;
   text-transform: uppercase;
   color: var(--muted);
-  white-space: nowrap;
-  animation: marquee-slide 18s linear infinite;
+  white-space: normal;
 }
 
 .btn-magnetic {
@@ -674,6 +689,7 @@ select {
   }
 
   .ambient-orb {
+    display: none;
     transform: none;
   }
 
@@ -700,6 +716,7 @@ select {
 
   .signature-headline {
     font-size: clamp(2.18rem, 10vw, 3.05rem);
+    line-height: 1.02;
   }
 
   .hero-signature-ribbon p {
@@ -711,7 +728,7 @@ select {
 @media (max-width: 480px) {
   .section-title {
     font-size: clamp(2.05rem, 10.8vw, 2.78rem);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   .signature-headline {
