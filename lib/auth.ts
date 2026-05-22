@@ -2,6 +2,7 @@ import type { Session } from "next-auth";
 import NextAuth, { getServerSession, type NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import { cookies } from "next/headers";
+import { isDevelopmentAdminEnvironment, isProductionEnvironment } from "./admin-environment";
 
 const ADMIN_BYPASS_COOKIE = "majoolify-admin-bypass";
 
@@ -13,7 +14,7 @@ function getAllowedUsers() {
 }
 
 function isBypassEnabled() {
-  return process.env.NODE_ENV !== "production" && Boolean(process.env.ADMIN_BYPASS_TOKEN);
+  return !isProductionEnvironment() && Boolean(process.env.ADMIN_BYPASS_TOKEN);
 }
 
 function canUseGitHubProvider() {
@@ -58,6 +59,14 @@ export function isAuthorizedAdmin(session: Session | null) {
 }
 
 export async function getAdminAccess() {
+  if (isDevelopmentAdminEnvironment()) {
+    return {
+      authorized: true as const,
+      source: "development" as const,
+      label: "Local development admin",
+    };
+  }
+
   const session = await getServerSession(authOptions);
 
   if (isAuthorizedAdmin(session)) {

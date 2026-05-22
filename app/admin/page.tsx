@@ -47,8 +47,7 @@ function SignInScreen() {
         <h1 className="section-title mt-4 text-[3rem]">Portfolio backoffice</h1>
         <p className="mt-4 max-w-xl text-pretty text-[var(--muted)]">
           Sign in with the allowed GitHub account to edit public copy, case studies,
-          and uploaded assets. In local development you can also use the test bypass
-          route when configured.
+          and uploaded assets.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -154,9 +153,11 @@ export default async function AdminPage({
             <Link href="/en" className={BUTTON_SECONDARY}>
               View site
             </Link>
-            <a href={getAdminSignOutUrl()} className={BUTTON_PRIMARY}>
-              Sign out
-            </a>
+            {access.source === "github" ? (
+              <a href={getAdminSignOutUrl()} className={BUTTON_PRIMARY}>
+                Sign out
+              </a>
+            ) : null}
           </div>
         </div>
 

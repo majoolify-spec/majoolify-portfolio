@@ -23,10 +23,28 @@ test("@smoke renders case studies and handles redacted content", async ({ page }
   await expect(page.getByRole("link", { name: /Live demo/i })).toHaveCount(0);
 });
 
-test("@smoke protects the admin route", async ({ page }) => {
+test("@smoke renders standalone public pages", async ({ page }) => {
+  await page.goto("/en/work");
+  await expect(page.getByRole("heading", { name: /Case studies with signals/i })).toBeVisible();
+
+  await page.goto("/fr/services");
+  await expect(page.getByRole("heading", { name: /Des builds pour des équipes/i })).toBeVisible();
+
+  await page.goto("/en/contact");
+  await expect(page.getByRole("heading", { name: /Need a frontend partner/i })).toBeVisible();
+
+  await page.goto("/fr/about");
+  await expect(page.getByRole("heading", { name: /Ahmed Majoul construit/i })).toBeVisible();
+
+  await page.goto("/en/privacy");
+  await expect(page.getByRole("heading", { name: /Privacy notice/i })).toBeVisible();
+});
+
+test("@smoke opens the dev admin route without authentication", async ({ page }) => {
   await page.goto("/admin");
-  await expect(page.getByText(/Portfolio backoffice/i)).toBeVisible();
-  await expect(page.getByRole("link", { name: /Sign in with GitHub/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Majoolify backoffice/i })).toBeVisible();
+  await expect(page.getByText(/Local development admin/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Sign in with GitHub/i })).toHaveCount(0);
 });
 
 test("@smoke supports a mocked admin publish flow", async ({ page }) => {

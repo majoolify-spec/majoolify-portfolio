@@ -2,11 +2,13 @@ import Link from "next/link";
 import { ArrowUpRight, Globe2, ShieldCheck } from "lucide-react";
 import type { HomeContent, SiteSettings } from "../lib/schemas";
 import { alternateLocale, type Locale } from "../lib/locale";
+import { shouldShowAdminDashboardLink } from "../lib/admin-environment";
 import { BUTTON_SECONDARY } from "../lib/ui-classes";
 
 type PublicHeaderProps = {
   locale: Locale;
   home: HomeContent;
+  localeHref?: string;
 };
 
 export function LocaleSwitch({
@@ -29,14 +31,14 @@ export function LocaleSwitch({
   );
 }
 
-export function PublicHeader({ locale, home }: PublicHeaderProps) {
+export function PublicHeader({ locale, home, localeHref }: PublicHeaderProps) {
   const base = `/${locale}`;
   const navItems = [
-    { key: "work", label: home.nav.work },
-    { key: "services", label: home.nav.services },
-    { key: "process", label: home.nav.process },
-    { key: "about", label: home.nav.about },
-    { key: "contact", label: home.nav.contact },
+    { key: "work", label: home.nav.work, href: `${base}/work` },
+    { key: "services", label: home.nav.services, href: `${base}/services` },
+    { key: "process", label: home.nav.process, href: `${base}#process` },
+    { key: "about", label: home.nav.about, href: `${base}/about` },
+    { key: "contact", label: home.nav.contact, href: `${base}/contact` },
   ] as const;
 
   return (
@@ -61,7 +63,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             {navItems.map((item) => (
               <a
                 key={item.key}
-                href={`${base}#${item.key}`}
+                href={item.href}
                 className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 py-1 transition hover:bg-white/60 hover:text-[var(--foreground)]"
               >
                 {item.label}
@@ -69,15 +71,17 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
             ))}
           </nav>
           <div className="flex items-center gap-3">
-            <LocaleSwitch locale={locale} href={`/${alternateLocale(locale)}`} />
-            <div className="hidden md:block">
-              <Link
-                href="/admin"
-                className={BUTTON_SECONDARY}
-              >
-                Admin
-              </Link>
-            </div>
+            <LocaleSwitch locale={locale} href={localeHref ?? `/${alternateLocale(locale)}`} />
+            {shouldShowAdminDashboardLink() ? (
+              <div className="hidden md:block">
+                <Link
+                  href="/admin"
+                  className={BUTTON_SECONDARY}
+                >
+                  Admin
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -88,7 +92,7 @@ export function PublicHeader({ locale, home }: PublicHeaderProps) {
           {navItems.map((item) => (
             <a
               key={item.key}
-              href={`${base}#${item.key}`}
+              href={item.href}
               className="inline-flex min-h-11 items-center rounded-full border border-[var(--border)] bg-white/65 px-3 py-1.5 text-sm font-medium whitespace-nowrap text-[var(--muted)] transition hover:border-[rgba(15,118,110,0.3)] hover:text-[var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
             >
               {item.label}
@@ -108,6 +112,25 @@ export function PublicFooter({
   locale: Locale;
   site: SiteSettings;
 }) {
+  const footerLinks = [
+    {
+      label: locale === "en" ? "Work" : "Réalisations",
+      href: `/${locale}/work`,
+    },
+    {
+      label: locale === "en" ? "Services" : "Services",
+      href: `/${locale}/services`,
+    },
+    {
+      label: locale === "en" ? "Contact" : "Contact",
+      href: `/${locale}/contact`,
+    },
+    {
+      label: locale === "en" ? "Privacy" : "Confidentialité",
+      href: `/${locale}/privacy`,
+    },
+  ];
+
   return (
     <footer className="mt-20 border-t border-black/5 pb-10 pt-8">
       <div className="shell flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -120,6 +143,11 @@ export function PublicFooter({
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
+          {footerLinks.map((link) => (
+            <Link key={link.href} href={link.href} className={BUTTON_SECONDARY}>
+              {link.label}
+            </Link>
+          ))}
           {site.socials.map((social) => (
             <a
               key={social.href}

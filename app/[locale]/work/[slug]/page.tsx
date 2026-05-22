@@ -17,6 +17,7 @@ import {
   toAbsoluteUrl,
 } from "../../../../lib/seo";
 import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "../../../../lib/ui-classes";
+import { shouldShowAdminDashboardLink } from "../../../../lib/admin-environment";
 import { LocaleSwitch, PublicFooter } from "../../../../components/site-chrome";
 
 export async function generateStaticParams() {
@@ -125,9 +126,11 @@ export default async function CaseStudyPage({
           </Link>
           <div className="flex items-center gap-3">
             <LocaleSwitch locale={resolvedLocale} href={getCaseStudyPath(alternateLocale(resolvedLocale), slug)} />
-            <Link href="/admin" className={BUTTON_SECONDARY}>
-              Admin
-            </Link>
+            {shouldShowAdminDashboardLink() ? (
+              <Link href="/admin" className={BUTTON_SECONDARY}>
+                Admin
+              </Link>
+            ) : null}
           </div>
         </div>
       </header>

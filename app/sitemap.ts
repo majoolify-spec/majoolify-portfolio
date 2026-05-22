@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
 import { getSiteSettings, getVisibleCaseStudySlugs } from "../lib/content";
 import { locales } from "../lib/locale";
+import { getPublicPageCopy, publicPageSegments } from "../lib/public-page-metadata";
 import {
   getCaseStudyLanguageAlternates,
   getCaseStudyUrl,
   getHomeLanguageAlternates,
+  getLocalizedPageLanguageAlternates,
+  getLocalizedPageUrl,
   getLocaleHomeUrl,
 } from "../lib/seo";
 
@@ -37,5 +40,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...pages, ...caseStudyPages];
+  const standalonePages: MetadataRoute.Sitemap = publicPageSegments.flatMap((segment) =>
+    locales.map((locale) => ({
+      url: getLocalizedPageUrl(site.seo.siteUrl, locale, segment),
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: getPublicPageCopy(segment, locale).priority,
+      alternates: {
+        languages: getLocalizedPageLanguageAlternates(site.seo.siteUrl, segment),
+      },
+    })),
+  );
+
+  return [...pages, ...standalonePages, ...caseStudyPages];
 }
